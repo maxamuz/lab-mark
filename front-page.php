@@ -1,0 +1,932 @@
+<?php
+/**
+ * The front page template file
+ *
+ * @package lab-mark
+ */
+
+get_header();
+?>
+
+<!-- 1. Hero -->
+<section class="hero">
+	<div id="hero-bg"></div>
+	<div class="container">
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1 class="hero-title">
+					Создаем сайты, которые <br />
+					<span class="typing"></span>
+				</h1>
+				<p>
+					Создаём индивидуальные веб-решения, которые работают на рост
+					вашего бизнеса. Чистый код, современный дизайн и надёжность на
+					каждом этапе.
+				</p>
+				<div class="hero-buttons">
+					<a href="#cta" class="btn btn-primary">Рассчитать проект</a>
+					<a href="#pricing" class="btn btn-outline">Смотреть цены</a>
+				</div>
+			</div>
+			<div class="hero-visual">
+				<div class="code-container">
+					<div class="code-block animated-scroll">
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">project</span> = {</span>
+						<span class="code-line">&nbsp;&nbsp;type: <span class="cl-green">'Custom Development'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;quality: <span class="cl-green">'Premium'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;support: <span class="cl-green">'24/7'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;stack: [<span class="cl-yellow">'React'</span>, <span class="cl-yellow">'Node.js'</span>]</span>
+						<span class="code-line">};</span>
+
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">features</span> = [</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Authentication'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Real-time Updates'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Data Encryption'</span></span>
+						<span class="code-line">];</span>
+
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">config</span> = {</span>
+						<span class="code-line">&nbsp;&nbsp;debug: <span class="cl-blue">true</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;port: <span class="cl-orange">3000</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;ssl: <span class="cl-blue">false</span></span>
+						<span class="code-line">};</span>
+
+						<span class="code-line"><span class="cl-purple">function</span> <span class="cl-blue">initApp</span><span class="cl-blue">()</span> {</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-comment">// Initialize core modules</span></span>
+						<span class="code-line">&nbsp;&nbsp;console.log(<span class="cl-green">'App started'</span>);</span>
+						<span class="code-line">}</span>
+
+						<span class="code-line"><span class="cl-purple">export default</span> { project, features, config, initApp };</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 2. USP -->
+<section class="usp section-padding">
+	<div class="container">
+		<div class="section-header">
+			<h2>Почему выбирают нас</h2>
+			<p>
+				Мы не используем шаблоны. Каждый проект — уникальная разработка под
+				задачи клиента.
+			</p>
+		</div>
+		<div class="usp-grid">
+			<div class="usp-card animate">
+				<div class="usp-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+					</svg>
+				</div>
+				<h3>Опыт и экспертиза</h3>
+				<p>
+					Более 5 лет на рынке. Реализовали 120+ проектов различной
+					сложности.
+				</p>
+			</div>
+			<div class="usp-card animate">
+				<div class="usp-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+					</svg>
+				</div>
+				<h3>Гарантия качества</h3>
+				<p>
+					12 месяцев гарантии на код. Тестирование на всех устройствах и в
+					браузерах.
+				</p>
+			</div>
+			<div class="usp-card animate">
+				<div class="usp-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10" />
+						<polyline points="12 6 12 12 16 14" />
+					</svg>
+				</div>
+				<h3>Соблюдение сроков</h3>
+				<p>
+					Чёткое планирование и прозрачные этапы. Вы всегда знаете, что
+					происходит с проектом.
+				</p>
+			</div>
+			<div class="usp-card animate">
+				<div class="usp-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+					</svg>
+				</div>
+				<h3>Поддержка 24/7</h3>
+				<p>
+					Всегда на связи. Оперативно решаем любые вопросы и помогаем с
+					развитием проекта.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 3. Услуги -->
+<section class="services section-padding" id="services">
+	<div class="container">
+		<div class="section-header">
+			<h2>Наши услуги</h2>
+			<p>Полный цикл разработки: от идеи до запуска и поддержки</p>
+		</div>
+		<div class="services-grid">
+			<div class="service-column highlight animate">
+				<h3>Разработка <span class="badge">Full-stack</span></h3>
+				<ul class="service-list">
+					<li>
+						<span>Лендинги</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Корпоративные сайты</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Интернет-магазины</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Веб-сервисы и CRM</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>API-интеграции</span>
+						<span class="arrow-icon">→</span>
+					</li>
+				</ul>
+			</div>
+			<div class="service-column highlight animate">
+				<h3>Техподдержка <span class="badge">Сопровождение</span></h3>
+				<ul class="service-list">
+					<li>
+						<span>Обновление контента</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Мониторинг безопасности</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Оптимизация скорости</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Доработка функционала</span>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
+						<span>Выделенный хостинг</span>
+						<span class="arrow-icon">→</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 4. Цены -->
+<section class="pricing section-padding" id="pricing">
+	<div class="container">
+		<div class="section-header">
+			<h2>Стоимость разработки</h2>
+			<p>
+				Прозрачное ценообразование без скрытых платежей. Выберите подходящий
+				пакет или получите индивидуальное предложение.
+			</p>
+		</div>
+		<div class="pricing-grid">
+			<div class="pricing-card animate">
+				<div class="pricing-header">
+					<h3 class="pricing-name">Старт</h3>
+					<p class="pricing-description">
+						Идеально для лендингов и небольших проектов
+					</p>
+					<div class="pricing-amount">от 50 000 ₽</div>
+					<div class="pricing-period">разовая оплата</div>
+				</div>
+				<div class="pricing-features">
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Уникальный дизайн</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Адаптивная вёрстка</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Базовая SEO-оптимизация</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Форма обратной связи</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Срок: 2-3 недели</span>
+					</div>
+					<div class="pricing-feature">
+						<span class="feature-check no">—</span><span>CMS система</span>
+					</div>
+					<div class="pricing-feature">
+						<span class="feature-check no">—</span><span>Техподдержка</span>
+					</div>
+				</div>
+				<button class="pricing-button secondary" onclick="scrollToContact('Старт')">
+					Выбрать
+				</button>
+			</div>
+			<div class="pricing-card popular animate">
+				<div class="popular-badge">Популярный</div>
+				<div class="pricing-header">
+					<h3 class="pricing-name">Бизнес</h3>
+					<p class="pricing-description">
+						Для корпоративных сайтов и интернет-магазинов
+					</p>
+					<div class="pricing-amount">от 120 000 ₽</div>
+					<div class="pricing-period">разовая оплата</div>
+				</div>
+				<div class="pricing-features">
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Всё из пакета «Старт»</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>CMS (WordPress/Bitrix)</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Интеграция с CRM</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Мультиязычность</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Срок: 4-6 недель</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>1 месяц поддержки</span>
+					</div>
+					<div class="pricing-feature">
+						<span class="feature-check no">—</span><span>Сложный функционал</span>
+					</div>
+				</div>
+				<button class="pricing-button primary" onclick="scrollToContact('Бизнес')">
+					Выбрать
+				</button>
+			</div>
+			<div class="pricing-card animate">
+				<div class="pricing-header">
+					<h3 class="pricing-name">Premium</h3>
+					<p class="pricing-description">
+						Сложные веб-сервисы и высоконагруженные проекты
+					</p>
+					<div class="pricing-amount">от 250 000 ₽</div>
+					<div class="pricing-period">разовая оплата</div>
+				</div>
+				<div class="pricing-features">
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Всё из пакета «Бизнес»</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Индивидуальная разработка</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Сложные интеграции API</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Высокая нагрузка</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Срок: от 8 недель</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>3 месяца поддержки</span>
+					</div>
+					<div class="pricing-feature included">
+						<span class="feature-check yes">✓</span><span>Приоритетная поддержка</span>
+					</div>
+				</div>
+				<button class="pricing-button secondary" onclick="scrollToContact('Premium')">
+					Выбрать
+				</button>
+			</div>
+		</div>
+		<div class="pricing-note">
+			<p>
+				💡 Нужен индивидуальный расчёт?
+				<a href="#cta">Обсудите проект с нами</a>
+			</p>
+			<p style="margin-top: 10px; font-size: 0.85rem">
+				Также предлагаем <strong>ежемесячную техподдержку</strong> от 15 000
+				₽/мес
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- 5. ПОРТФОЛИО -->
+<section class="portfolio section-padding" id="portfolio">
+	<div class="container">
+		<div class="section-header">
+			<h2>Наши проекты</h2>
+			<p>Решения, которые приносят прибыль клиентам</p>
+		</div>
+
+		<!-- Фильтры -->
+		<div class="portfolio-filters">
+			<button class="filter-btn active" data-filter="all">
+				Все проекты
+			</button>
+			<button class="filter-btn" data-filter="landing">Лендинги</button>
+			<button class="filter-btn" data-filter="corporate">
+				Корпоративные сайты
+			</button>
+			<button class="filter-btn" data-filter="shop">
+				Интернет-магазины
+			</button>
+		</div>
+
+		<!-- Сетка проектов -->
+		<div class="portfolio-grid" id="portfolioGrid">
+			<div
+				class="project-card"
+				data-category="corporate"
+				data-title="FinTech Dashboard"
+				data-desc="Разработка корпоративного портала для финансовой аналитики. Реализовали дашборд с визуализацией данных в реальном времени, личный кабинет для клиентов и интеграцию с внутренними ERP-системами. Скорость загрузки оптимизирована до 0.8 с."
+				data-tags="React, Node.js, PostgreSQL, ECharts"
+				data-bg="linear-gradient(135deg, #1a1a3e, #2d2d6b, #0a2540)"
+			>
+				<div class="project-img">
+					<img
+						src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+						alt="FinTech Dashboard — финансовая аналитика"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+					<div class="project-overlay">
+						<button class="btn btn-primary open-case-btn">
+							Смотреть кейс
+						</button>
+					</div>
+				</div>
+				<div class="project-info">
+					<h4>FinTech Dashboard</h4>
+					<p>Корпоративный портал для аналитики данных</p>
+					<div class="project-tags">
+						<span>React</span><span>Node.js</span><span>PostgreSQL</span>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="project-card"
+				data-category="shop"
+				data-title="EcoShop Online"
+				data-desc="Полноценный интернет-магазин эко-товаров с каталогом более 2000 позиций. Внедрили корзину с умными рекомендациями, онлайн-оплату и интеграцию с СДЭК. Конверсия выросла на 35% за первые 2 месяца."
+				data-tags="Vue.js, Laravel, MySQL, Stripe, Algolia"
+				data-bg="linear-gradient(135deg, #0a3d2e, #0e5e42, #0a2540)"
+			>
+				<div class="project-img">
+					<img
+						src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
+						alt="EcoShop Online — интернет-магазин"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+					<div class="project-overlay">
+						<button class="btn btn-primary open-case-btn">
+							Смотреть кейс
+						</button>
+					</div>
+				</div>
+				<div class="project-info">
+					<h4>EcoShop Online</h4>
+					<p>Интернет-магазин эко-товаров с CRM</p>
+					<div class="project-tags">
+						<span>Vue.js</span><span>Laravel</span><span>MySQL</span>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="project-card"
+				data-category="landing"
+				data-title="MedClinic Pro"
+				data-desc="Продающий лендинг для сети клиник с функцией онлайн-записи. Разработали интерактивную форму бронирования, калькулятор стоимости услуг и адаптивную вёрстку. ROI рекламных кампаний увеличился в 2 раза."
+				data-tags="Next.js, TypeScript, Tailwind, Framer Motion"
+				data-bg="linear-gradient(135deg, #3d2a0a, #5e3e0e, #0a2540)"
+			>
+				<div class="project-img">
+					<img
+						src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80"
+						alt="MedClinic Pro — сайт клиники"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+					<div class="project-overlay">
+						<button class="btn btn-primary open-case-btn">
+							Смотреть кейс
+						</button>
+					</div>
+				</div>
+				<div class="project-info">
+					<h4>MedClinic Pro</h4>
+					<p>Сайт клиники с онлайн-записью</p>
+					<div class="project-tags">
+						<span>Next.js</span><span>TypeScript</span><span>Tailwind</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 6. О студии -->
+<section class="about section-padding" id="about">
+	<div class="container">
+		<div class="about-content">
+			<div class="about-img animate">
+				<img
+					src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+					alt="Наша команда за работой"
+					style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"
+				>
+			</div>
+			<div class="about-text animate">
+				<h2>Больше, чем просто разработчики</h2>
+				<p>
+					Мы — команда инженеров и дизайнеров, увлечённых технологиями. Наш
+					подход строится на прозрачности процессов и партнёрских отношениях
+					с клиентом.
+				</p>
+				<p>
+					Мы не просто пишем код — мы решаем бизнес-задачи. Перед стартом
+					проводим аудит потребностей, чтобы предложить наиболее эффективное
+					техническое решение.
+				</p>
+				<div class="stats-row">
+					<div class="stat-item">
+						<h4>120+</h4>
+						<span>Проектов запущено</span>
+					</div>
+					<div class="stat-item">
+						<h4>15</h4>
+						<span>Специалистов в штате</span>
+					</div>
+					<div class="stat-item">
+						<h4>98%</h4>
+						<span>Клиентов довольны</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 6.5 Наш стек -->
+<section class="tech-stack-section section-padding" id="tech-stack">
+	<div class="container">
+		<div class="section-header">
+			<h2>Наш стек</h2>
+			<p>Мы используем только проверенные и эффективные технологии.</p>
+		</div>
+
+		<div class="tech-grid">
+			<div class="tech-item animate" data-level="expert">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M12 2L2 7l10 5 10-5-10-5z" />
+						<path d="M2 17l10 5 10-5" />
+						<path d="M2 12l10 5 10-5" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">WordPress</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="100"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="expert">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<polyline points="16 18 22 12 16 6" />
+						<polyline points="8 6 2 12 8 18" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Laravel</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="95"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="expert">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<circle cx="12" cy="12" r="2" />
+						<path d="M12 2a10 10 0 0 0-10 10c0 5.25 10 10 10 10s10-4.75 10-10A10 10 0 0 0 12 2z" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">React</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="90"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M12 2L2 19h20L12 2z" />
+						<path d="M12 8l-4 7h8l-4-7z" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Vue.js</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="85"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M5 5.5A6.5 6.5 0 0 1 11.5 12c0 3.6-2.4 6-5.5 7" />
+						<path d="M19 5.5A6.5 6.5 0 0 0 12.5 12c0 3.6 2.4 6 5.5 7" />
+						<line x1="12" y1="12" x2="12" y2="22" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Node.js</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="80"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+						<path d="M8 14s1.5 2 4 2 4-2 4-2" />
+						<line x1="9" y1="9" x2="9.01" y2="9" />
+						<line x1="15" y1="9" x2="15.01" y2="9" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Python</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="75"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d="M3 3v18h18" />
+						<path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Google Analytics</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="90"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<circle cx="12" cy="12" r="10" />
+						<path d="M12 6v6l4 2" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Я.Метрика</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="85"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tech-item animate" data-level="advanced">
+				<div class="tech-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<rect x="3" y="3" width="7" height="7" />
+						<rect x="14" y="3" width="7" height="7" />
+						<rect x="14" y="14" width="7" height="7" />
+						<rect x="3" y="14" width="7" height="7" />
+					</svg>
+				</div>
+				<div class="tech-info">
+					<span class="tech-name">Google Tag Manager</span>
+					<div class="skill-bar">
+						<div class="skill-fill" data-width="80"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 6.6 Процесс работы -->
+<section class="process-section section-padding" id="process">
+	<div class="container">
+		<div class="section-header">
+			<h2>Процесс работы</h2>
+			<p>Прозрачные этапы и чёткие сроки реализации.</p>
+		</div>
+
+		<div class="timeline">
+			<div class="timeline-item animate">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<span class="timeline-step">Этап 01</span>
+					<h3>Аналитика и ТЗ</h3>
+					<p>
+						Изучаем ваш бизнес, конкурентов и целевую аудиторию. Формируем
+						подробное техническое задание.
+					</p>
+					<span class="timeline-duration">1–2 недели</span>
+				</div>
+			</div>
+
+			<div class="timeline-item animate">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<span class="timeline-step">Этап 02</span>
+					<h3>Проектирование и UI/UX</h3>
+					<p>
+						Создаём прототипы и современный дизайн, ориентированный на
+						пользователя и конверсию.
+					</p>
+					<span class="timeline-duration">2–3 недели</span>
+				</div>
+			</div>
+
+			<div class="timeline-item animate">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<span class="timeline-step">Этап 03</span>
+					<h3>Разработка и интеграция</h3>
+					<p>
+						Вёрстка, программирование функционала и интеграция с внешними
+						сервисами.
+					</p>
+					<span class="timeline-duration">4–8 недель</span>
+				</div>
+			</div>
+
+			<div class="timeline-item animate">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<span class="timeline-step">Этап 04</span>
+					<h3>Тестирование и QA</h3>
+					<p>
+						Проверка работоспособности во всех браузерах и на всех
+						устройствах, исправление ошибок.
+					</p>
+					<span class="timeline-duration">1 неделя</span>
+				</div>
+			</div>
+
+			<div class="timeline-item animate">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<span class="timeline-step">Этап 05</span>
+					<h3>Запуск и поддержка</h3>
+					<p>
+						Перенос на боевой хостинг, обучение персонала и дальнейшее
+						сопровождение проекта.
+					</p>
+					<span class="timeline-duration">Пожизненно</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 7. Отзывы -->
+<section class="testimonials section-padding" id="reviews">
+	<div class="container">
+		<div class="section-header">
+			<h2>Что говорят клиенты</h2>
+			<p>Долгосрочное сотрудничество — наша цель</p>
+		</div>
+		<div class="reviews-grid">
+			<div class="review-card animate">
+				<div class="review-stars">★★★★★</div>
+				<p class="review-text">
+					«Ребята сделали невозможное: перенесли нашу сложную CRM на новый
+					движок без потери данных. Техподдержка реагирует моментально.»
+				</p>
+				<div class="review-author">
+					<div class="author-avatar">АП</div>
+					<div class="author-info">
+						<h5>Алексей Петров</h5>
+						<span>CTO, LogisticGroup</span>
+					</div>
+				</div>
+			</div>
+			<div class="review-card animate">
+				<div class="review-stars">★★★★★</div>
+				<p class="review-text">
+					«Заказывали интернет-магазин. Сроки соблюдены идеально. Конверсия
+					выросла на 40% после редизайна и оптимизации.»
+				</p>
+				<div class="review-author">
+					<div class="author-avatar">МИ</div>
+					<div class="author-info">
+						<h5>Мария Иванова</h5>
+						<span>Владелец, BeautyStore</span>
+					</div>
+				</div>
+			</div>
+			<div class="review-card animate">
+				<div class="review-stars">★★★★★</div>
+				<p class="review-text">
+					«Профессиональный подход к документации и передаче прав. Очень
+					удобно работать, рекомендую всем.»
+				</p>
+				<div class="review-author">
+					<div class="author-avatar">ДВ</div>
+					<div class="author-info">
+						<h5>Дмитрий Волков</h5>
+						<span>Директор, AutoParts</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="faq section-padding" id="faq">
+	<div class="container">
+		<div class="section-header"><h2>Частые вопросы</h2></div>
+		<div class="faq-list">
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Сколько стоит разработка сайта? <span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					Стоимость зависит от сложности. Лендинги от 50 000 ₽,
+					корпоративные сайты от 120 000 ₽, сложные сервисы от 250 000 ₽.
+					Точная смета после ТЗ.
+				</div>
+			</div>
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Какие сроки разработки? <span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					Средний срок лендинга — 2-3 недели, корпоративного сайта — 4–6
+					недель, сложных сервисов — от 8 недель.
+				</div>
+			</div>
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Что входит в техподдержку? <span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					Мониторинг работоспособности, регулярные бэкапы, обновление
+					контента (до 5 часов в месяц), исправление ошибок, консультации.
+				</div>
+			</div>
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Вы даёте гарантию? <span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					Да, 12 месяцев гарантии на техническую исправность кода. Также
+					передаём все исходники и права доступа вам.
+				</div>
+			</div>
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Как происходит передача проекта? <span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					По завершении работ мы передаём полный доступ к репозиторию,
+					серверу, базам данных. Проводим обучение вашей команды.
+				</div>
+			</div>
+			<div class="faq-item animate">
+				<div class="faq-question">
+					Можно ли доработать существующий сайт?
+					<span class="faq-icon">+</span>
+				</div>
+				<div class="faq-answer">
+					Конечно. Проводим аудит текущего решения и предлагаем план
+					доработок с оценкой сроков и стоимости.
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 9. CTA -->
+<section class="cta-section section-padding" id="cta">
+	<div class="container">
+		<div class="cta-box animate">
+			<h2>Обсудить проект</h2>
+			<p>
+				Оставьте заявку — свяжемся в течение 30 минут для бесплатной
+				консультации.
+			</p>
+			<form id="contactForm" onsubmit="handleFormSubmit(event)">
+				<div class="form-grid">
+					<input
+						type="text"
+						class="form-input"
+						placeholder="Ваше имя"
+						required
+					>
+					<input
+						type="tel"
+						class="form-input"
+						placeholder="Телефон"
+						required
+					>
+					<input
+						type="email"
+						class="form-input full-width"
+						placeholder="Email"
+					>
+					<textarea
+						class="form-input full-width"
+						placeholder="Кратко опишите задачу..."
+						rows="4"
+					></textarea>
+				</div>
+				<button
+					type="submit"
+					class="btn btn-primary"
+					style="width: 100%; padding: 16px"
+				>
+					Отправить заявку
+				</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<!-- 10. Блог -->
+<section class="blog section-padding" id="blog">
+	<div class="container">
+		<div class="section-header">
+			<h2>Полезные статьи</h2>
+			<p>Экспертные материалы о веб-разработке</p>
+		</div>
+		<div class="blog-grid">
+			<div class="article-card animate">
+				<div class="article-img">
+					<img
+						src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+						alt="Как выбрать подрядчика для разработки сайта"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+				</div>
+				<div class="article-content">
+					<span class="article-tag">Советы</span>
+					<h4>Как выбрать подрядчика для разработки сайта?</h4>
+					<a href="#" class="article-link">Читать далее →</a>
+				</div>
+			</div>
+			<div class="article-card animate">
+				<div class="article-img">
+					<img
+						src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+						alt="Почему важна техподдержка после запуска"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+				</div>
+				<div class="article-content">
+					<span class="article-tag">Технологии</span>
+					<h4>Почему важна техподдержка после запуска?</h4>
+					<a href="#" class="article-link">Читать далее →</a>
+				</div>
+			</div>
+			<div class="article-card animate">
+				<div class="article-img">
+					<img
+						src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
+						alt="Тренды веб-дизайна 2026 года"
+						style="width: 100%; height: 100%; object-fit: cover"
+					>
+				</div>
+				<div class="article-content">
+					<span class="article-tag">Тренды</span>
+					<h4>Тренды веб-дизайна 2026 года</h4>
+					<a href="#" class="article-link">Читать далее →</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php
+get_footer();

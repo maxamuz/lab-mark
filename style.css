@@ -1,0 +1,125 @@
+/*
+Theme Name: Lab-Mark
+Theme URI: https://lab-mark.loc
+Author: Lab-Mark Team
+Author URI: https://lab-mark.loc
+Description: Тема для студии разработки и маркетинга. Современный дизайн с тёмной темой, анимациями и интерактивными элементами.
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lab-mark
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+*/
+
+/* =============================================
+   WordPress Override Styles
+   Минимальные стили для корректной работы WP
+   ============================================= */
+
+/* WordPress Admin Bar compatibility */
+.admin-bar header {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar header {
+		top: 46px;
+	}
+}
+
+/* WordPress default content alignment */
+.entry-content {
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+/* Ensure WordPress editor styles don't conflict */
+body.logged-in.admin-bar {
+	padding-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	body.logged-in.admin-bar {
+		padding-top: 46px;
+	}
+}
+
+/* WordPress block editor compatibility */
+.wp-block-image img,
+.wp-block-gallery img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* WordPress forms compatibility */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+/* Screen reader text (WordPress standard) */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	word-wrap: normal !important;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	clip: auto !important;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* Skip link */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 2.5em;
+	z-index: 999999;
+	background-color: #f1f1f1;
+	color: #21759b;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.skip-link:focus {
+	left: 6px;
+	top: 7px;
+}
