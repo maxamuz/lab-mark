@@ -268,6 +268,14 @@
           if (modalTitle) modalTitle.textContent = card.dataset.title;
           if (modalDesc) modalDesc.textContent = card.dataset.desc;
 
+          // Сроки, стек (из тегов), результат
+          var modalDuration = document.getElementById("modalMetaDuration");
+          var modalMetaTech = document.getElementById("modalMetaTech");
+          var modalMetaResult = document.getElementById("modalMetaResult");
+          if (modalDuration) modalDuration.textContent = card.dataset.duration || "—";
+          if (modalMetaTech) modalMetaTech.textContent = card.dataset.tags || "—";
+          if (modalMetaResult) modalMetaResult.textContent = card.dataset.result || "—";
+
           // Получаем src изображения из карточки
           var cardImg = card.querySelector(".project-img img");
           var modalImageEl = document.getElementById("modalImage");
@@ -280,23 +288,6 @@
               '" style="width:100%;height:100%;object-fit:cover;border-radius:20px 20px 0 0">';
           } else if (modalImageEl) {
             modalImageEl.style.background = card.dataset.bg;
-          }
-
-          // Теги
-          var tagsArr = card.dataset.tags.split(",");
-          var modalTags = document.getElementById("modalTags");
-          if (modalTags) {
-            modalTags.innerHTML = tagsArr
-              .map(function (t) {
-                return "<span>" + t.trim() + "</span>";
-              })
-              .join("");
-          }
-          var modalMetaTech = document.getElementById("modalMetaTech");
-          if (modalMetaTech) {
-            modalMetaTech.textContent =
-              tagsArr.slice(0, 2).join(", ") +
-              (tagsArr.length > 2 ? "..." : "");
           }
 
           openModal();

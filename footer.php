@@ -97,19 +97,18 @@
 		<div class="modal-body">
 			<h3 class="modal-title" id="modalTitle"></h3>
 			<p class="modal-description" id="modalDesc"></p>
-			<div class="modal-tags" id="modalTags"></div>
 			<div class="modal-meta">
 				<div class="meta-item">
 					<h5>Сроки</h5>
-					<p>4-6 недель</p>
+					<p id="modalMetaDuration">—</p>
 				</div>
 				<div class="meta-item">
 					<h5>Стек</h5>
-					<p id="modalMetaTech">React, Node.js</p>
+					<p id="modalMetaTech">—</p>
 				</div>
 				<div class="meta-item">
 					<h5>Результат</h5>
-					<p>Рост конверсии на 35%</p>
+					<p id="modalMetaResult">—</p>
 				</div>
 			</div>
 		</div>

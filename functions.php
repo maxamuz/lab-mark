@@ -194,3 +194,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/cmb2/init.php';
 
+/**
+ * Portfolio: Custom Post Type, Taxonomies & Meta Boxes.
+ */
+require get_template_directory() . '/inc/portfolio.php';
+

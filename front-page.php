@@ -331,94 +331,91 @@ get_header();
 			<p>Решения, которые приносят прибыль клиентам</p>
 		</div>
 
+		<?php
+		// Получаем все категории проектов для фильтров.
+		$project_categories = get_terms( array(
+			'taxonomy'   => 'project_category',
+			'hide_empty' => true,
+		) );
+		?>
+
+		<?php if ( $project_categories ) : ?>
 		<!-- Фильтры -->
 		<div class="portfolio-filters">
 			<button class="filter-btn active" data-filter="all">
 				Все проекты
 			</button>
-			<button class="filter-btn" data-filter="landing">Лендинги</button>
-			<button class="filter-btn" data-filter="corporate">
-				Корпоративные сайты
+			<?php foreach ( $project_categories as $cat ) : ?>
+			<button class="filter-btn" data-filter="<?php echo esc_attr( $cat->slug ); ?>">
+				<?php echo esc_html( $cat->name ); ?>
 			</button>
-			<button class="filter-btn" data-filter="shop">
-				Интернет-магазины
-			</button>
+			<?php endforeach; ?>
 		</div>
+		<?php endif; ?>
 
+		<?php
+		// Запрос проектов.
+		$projects_query = new WP_Query( array(
+			'post_type'      => 'project',
+			'posts_per_page' => -1,
+			'orderby'        => 'meta_value_num',
+			'meta_key'       => '_labmark_sort_order',
+			'order'          => 'ASC',
+		) );
+		?>
+
+		<?php if ( $projects_query->have_posts() ) : ?>
 		<!-- Сетка проектов -->
 		<div class="portfolio-grid" id="portfolioGrid">
-			<div
-				class="project-card"
-				data-category="corporate"
-				data-title="FinTech Dashboard"
-				data-desc="Разработка корпоративного портала для финансовой аналитики. Реализовали дашборд с визуализацией данных в реальном времени, личный кабинет для клиентов и интеграцию с внутренними ERP-системами. Скорость загрузки оптимизирована до 0.8 с."
-				data-tags="React, Node.js, PostgreSQL, ECharts"
-				data-bg="linear-gradient(135deg, #1a1a3e, #2d2d6b, #0a2540)"
-			>
-				<div class="project-img">
-					<img
-						src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-						alt="FinTech Dashboard — финансовая аналитика"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
-					<div class="project-overlay">
-						<button class="btn btn-primary open-case-btn">
-							Смотреть кейс
-						</button>
-					</div>
-				</div>
-				<div class="project-info">
-					<h4>FinTech Dashboard</h4>
-					<p>Корпоративный портал для аналитики данных</p>
-					<div class="project-tags">
-						<span>React</span><span>Node.js</span><span>PostgreSQL</span>
-					</div>
-				</div>
-			</div>
+			<?php while ( $projects_query->have_posts() ) : $projects_query->the_post();
+				// Получаем данные мета-полей.
+				$case_description = get_post_meta( get_the_ID(), '_labmark_case_description', true );
+				$project_duration = get_post_meta( get_the_ID(), '_labmark_project_duration', true );
+				$project_result   = get_post_meta( get_the_ID(), '_labmark_project_result', true );
+				$preview_url      = get_post_meta( get_the_ID(), '_labmark_preview_url', true );
+				$bg_gradient      = get_post_meta( get_the_ID(), '_labmark_bg_gradient', true );
 
-			<div
-				class="project-card"
-				data-category="shop"
-				data-title="EcoShop Online"
-				data-desc="Полноценный интернет-магазин эко-товаров с каталогом более 2000 позиций. Внедрили корзину с умными рекомендациями, онлайн-оплату и интеграцию с СДЭК. Конверсия выросла на 35% за первые 2 месяца."
-				data-tags="Vue.js, Laravel, MySQL, Stripe, Algolia"
-				data-bg="linear-gradient(135deg, #0a3d2e, #0e5e42, #0a2540)"
-			>
-				<div class="project-img">
-					<img
-						src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
-						alt="EcoShop Online — интернет-магазин"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
-					<div class="project-overlay">
-						<button class="btn btn-primary open-case-btn">
-							Смотреть кейс
-						</button>
-					</div>
-				</div>
-				<div class="project-info">
-					<h4>EcoShop Online</h4>
-					<p>Интернет-магазин эко-товаров с CRM</p>
-					<div class="project-tags">
-						<span>Vue.js</span><span>Laravel</span><span>MySQL</span>
-					</div>
-				</div>
-			</div>
+				// Получаем категорию (для фильтра).
+				$cats = get_the_terms( get_the_ID(), 'project_category' );
+				$category_slug = $cats && ! is_wp_error( $cats ) ? $cats[0]->slug : '';
 
+				// Получаем метки (для project-tags).
+				$tags = get_the_terms( get_the_ID(), 'project_tag' );
+
+				// Изображение.
+				$img_src = '';
+				if ( has_post_thumbnail() ) {
+					$img_src = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+				} elseif ( $preview_url ) {
+					$img_src = esc_url( $preview_url );
+				}
+			?>
 			<div
 				class="project-card"
-				data-category="landing"
-				data-title="MedClinic Pro"
-				data-desc="Продающий лендинг для сети клиник с функцией онлайн-записи. Разработали интерактивную форму бронирования, калькулятор стоимости услуг и адаптивную вёрстку. ROI рекламных кампаний увеличился в 2 раза."
-				data-tags="Next.js, TypeScript, Tailwind, Framer Motion"
-				data-bg="linear-gradient(135deg, #3d2a0a, #5e3e0e, #0a2540)"
+				data-category="<?php echo esc_attr( $category_slug ); ?>"
+				data-title="<?php echo esc_attr( get_the_title() ); ?>"
+				data-desc="<?php echo esc_attr( $case_description ? $case_description : get_the_excerpt() ); ?>"
+				data-tags="<?php
+					if ( $tags && ! is_wp_error( $tags ) ) {
+						echo esc_attr( implode( ', ', wp_list_pluck( $tags, 'name' ) ) );
+					}
+				?>"
+				data-bg="<?php echo esc_attr( $bg_gradient ? $bg_gradient : 'linear-gradient(135deg, #0a2540, #0e3254, #050d1a)' ); ?>"
+				data-duration="<?php echo esc_attr( $project_duration ? $project_duration : '—' ); ?>"
+				data-result="<?php echo esc_attr( $project_result ? $project_result : '—' ); ?>"
 			>
 				<div class="project-img">
+					<?php if ( $img_src ) : ?>
 					<img
-						src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80"
-						alt="MedClinic Pro — сайт клиники"
+						src="<?php echo esc_url( $img_src ); ?>"
+						alt="<?php echo esc_attr( get_the_title() ); ?>"
 						style="width: 100%; height: 100%; object-fit: cover"
 					>
+					<?php else : ?>
+					<div class="mockup" style="background: <?php echo esc_attr( $bg_gradient ? $bg_gradient : 'var(--bg-card)' ); ?>;">
+						🖥
+					</div>
+					<?php endif; ?>
 					<div class="project-overlay">
 						<button class="btn btn-primary open-case-btn">
 							Смотреть кейс
@@ -426,14 +423,25 @@ get_header();
 					</div>
 				</div>
 				<div class="project-info">
-					<h4>MedClinic Pro</h4>
-					<p>Сайт клиники с онлайн-записью</p>
+					<h4><?php echo esc_html( get_the_title() ); ?></h4>
+					<p><?php echo esc_html( get_the_excerpt() ); ?></p>
+					<?php if ( $tags && ! is_wp_error( $tags ) ) : ?>
 					<div class="project-tags">
-						<span>Next.js</span><span>TypeScript</span><span>Tailwind</span>
+						<?php foreach ( $tags as $tag ) : ?>
+						<span><?php echo esc_html( $tag->name ); ?></span>
+						<?php endforeach; ?>
 					</div>
+					<?php endif; ?>
 				</div>
 			</div>
+			<?php endwhile; ?>
 		</div>
+		<?php wp_reset_postdata(); ?>
+		<?php else : ?>
+		<p style="text-align: center; color: var(--text-muted);">
+			<?php esc_html_e( 'Проекты ещё не добавлены. Загляните позже!', 'lab-mark' ); ?>
+		</p>
+		<?php endif; ?>
 	</div>
 </section>
 
