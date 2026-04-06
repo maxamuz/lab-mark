@@ -36,6 +36,7 @@
   // Плавный скролл
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (e) {
+      if (anchor.classList.contains("btn-read-full")) return;
       e.preventDefault();
       var target = document.querySelector(this.getAttribute("href"));
       if (target) {
@@ -267,6 +268,10 @@
           var modalDesc = document.getElementById("modalDesc");
           if (modalTitle) modalTitle.textContent = card.dataset.title;
           if (modalDesc) modalDesc.textContent = card.dataset.desc;
+
+          // Ссылка на полную запись
+          var readMoreLink = document.getElementById("modalReadMore");
+          if (readMoreLink) readMoreLink.href = card.dataset.permalink || "#";
 
           // Сроки, стек (из тегов), результат
           var modalDuration = document.getElementById("modalMetaDuration");

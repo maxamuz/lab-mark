@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The footer for our theme
  *
@@ -78,13 +79,12 @@
 						src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80"
 						alt="Карта — наш офис"
 						loading="lazy"
-						style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"
-					>
+						style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
 				</div>
 			</div>
 		</div>
 		<div class="copyright">
-			&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. Все права защищены. Разработка и техническая поддержка сайтов.
+			&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. Все права защищены. Разработка и техническая поддержка сайтов.
 		</div>
 	</div>
 </footer>
@@ -97,6 +97,7 @@
 		<div class="modal-body">
 			<h3 class="modal-title" id="modalTitle"></h3>
 			<p class="modal-description" id="modalDesc"></p>
+			<a href="#" class="btn-read-full" id="modalReadMore">Читать полностью</a>
 			<div class="modal-meta">
 				<div class="meta-item">
 					<h5>Сроки</h5>
@@ -123,4 +124,5 @@
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

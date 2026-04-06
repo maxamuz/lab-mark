@@ -403,7 +403,8 @@ get_header();
 									?>"
 						data-bg="<?php echo esc_attr($bg_gradient ? $bg_gradient : 'linear-gradient(135deg, #0a2540, #0e3254, #050d1a)'); ?>"
 						data-duration="<?php echo esc_attr($project_duration ? $project_duration : '—'); ?>"
-						data-result="<?php echo esc_attr($project_result ? $project_result : '—'); ?>">
+						data-result="<?php echo esc_attr($project_result ? $project_result : '—'); ?>"
+						data-permalink="<?php echo esc_url(get_permalink()); ?>">
 						<div class="project-img">
 							<?php if ($img_src) : ?>
 								<img
