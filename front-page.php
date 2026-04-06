@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The front page template file
  *
@@ -333,114 +334,112 @@ get_header();
 
 		<?php
 		// Получаем все категории проектов для фильтров.
-		$project_categories = get_terms( array(
+		$project_categories = get_terms(array(
 			'taxonomy'   => 'project_category',
 			'hide_empty' => true,
-		) );
+		));
 		?>
 
-		<?php if ( $project_categories ) : ?>
-		<!-- Фильтры -->
-		<div class="portfolio-filters">
-			<button class="filter-btn active" data-filter="all">
-				Все проекты
-			</button>
-			<?php foreach ( $project_categories as $cat ) : ?>
-			<button class="filter-btn" data-filter="<?php echo esc_attr( $cat->slug ); ?>">
-				<?php echo esc_html( $cat->name ); ?>
-			</button>
-			<?php endforeach; ?>
-		</div>
+		<?php if ($project_categories) : ?>
+			<!-- Фильтры -->
+			<div class="portfolio-filters">
+				<button class="filter-btn active" data-filter="all">
+					Все проекты
+				</button>
+				<?php foreach ($project_categories as $cat) : ?>
+					<button class="filter-btn" data-filter="<?php echo esc_attr($cat->slug); ?>">
+						<?php echo esc_html($cat->name); ?>
+					</button>
+				<?php endforeach; ?>
+			</div>
 		<?php endif; ?>
 
 		<?php
 		// Запрос проектов.
-		$projects_query = new WP_Query( array(
+		$projects_query = new WP_Query(array(
 			'post_type'      => 'project',
 			'posts_per_page' => -1,
 			'orderby'        => 'meta_value_num',
 			'meta_key'       => '_labmark_sort_order',
 			'order'          => 'ASC',
-		) );
+		));
 		?>
 
-		<?php if ( $projects_query->have_posts() ) : ?>
-		<!-- Сетка проектов -->
-		<div class="portfolio-grid" id="portfolioGrid">
-			<?php while ( $projects_query->have_posts() ) : $projects_query->the_post();
-				// Получаем данные мета-полей.
-				$case_description = get_post_meta( get_the_ID(), '_labmark_case_description', true );
-				$project_duration = get_post_meta( get_the_ID(), '_labmark_project_duration', true );
-				$project_result   = get_post_meta( get_the_ID(), '_labmark_project_result', true );
-				$preview_url      = get_post_meta( get_the_ID(), '_labmark_preview_url', true );
-				$bg_gradient      = get_post_meta( get_the_ID(), '_labmark_bg_gradient', true );
+		<?php if ($projects_query->have_posts()) : ?>
+			<!-- Сетка проектов -->
+			<div class="portfolio-grid" id="portfolioGrid">
+				<?php while ($projects_query->have_posts()) : $projects_query->the_post();
+					// Получаем данные мета-полей.
+					$case_description = get_post_meta(get_the_ID(), '_labmark_case_description', true);
+					$project_duration = get_post_meta(get_the_ID(), '_labmark_project_duration', true);
+					$project_result   = get_post_meta(get_the_ID(), '_labmark_project_result', true);
+					$preview_url      = get_post_meta(get_the_ID(), '_labmark_preview_url', true);
+					$bg_gradient      = get_post_meta(get_the_ID(), '_labmark_bg_gradient', true);
 
-				// Получаем категорию (для фильтра).
-				$cats = get_the_terms( get_the_ID(), 'project_category' );
-				$category_slug = $cats && ! is_wp_error( $cats ) ? $cats[0]->slug : '';
+					// Получаем категорию (для фильтра).
+					$cats = get_the_terms(get_the_ID(), 'project_category');
+					$category_slug = $cats && ! is_wp_error($cats) ? $cats[0]->slug : '';
 
-				// Получаем метки (для project-tags).
-				$tags = get_the_terms( get_the_ID(), 'project_tag' );
+					// Получаем метки (для project-tags).
+					$tags = get_the_terms(get_the_ID(), 'project_tag');
 
-				// Изображение.
-				$img_src = '';
-				if ( has_post_thumbnail() ) {
-					$img_src = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-				} elseif ( $preview_url ) {
-					$img_src = esc_url( $preview_url );
-				}
-			?>
-			<div
-				class="project-card"
-				data-category="<?php echo esc_attr( $category_slug ); ?>"
-				data-title="<?php echo esc_attr( get_the_title() ); ?>"
-				data-desc="<?php echo esc_attr( $case_description ? $case_description : get_the_excerpt() ); ?>"
-				data-tags="<?php
-					if ( $tags && ! is_wp_error( $tags ) ) {
-						echo esc_attr( implode( ', ', wp_list_pluck( $tags, 'name' ) ) );
+					// Изображение.
+					$img_src = '';
+					if (has_post_thumbnail()) {
+						$img_src = get_the_post_thumbnail_url(get_the_ID(), 'large');
+					} elseif ($preview_url) {
+						$img_src = esc_url($preview_url);
 					}
-				?>"
-				data-bg="<?php echo esc_attr( $bg_gradient ? $bg_gradient : 'linear-gradient(135deg, #0a2540, #0e3254, #050d1a)' ); ?>"
-				data-duration="<?php echo esc_attr( $project_duration ? $project_duration : '—' ); ?>"
-				data-result="<?php echo esc_attr( $project_result ? $project_result : '—' ); ?>"
-			>
-				<div class="project-img">
-					<?php if ( $img_src ) : ?>
-					<img
-						src="<?php echo esc_url( $img_src ); ?>"
-						alt="<?php echo esc_attr( get_the_title() ); ?>"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
-					<?php else : ?>
-					<div class="mockup" style="background: <?php echo esc_attr( $bg_gradient ? $bg_gradient : 'var(--bg-card)' ); ?>;">
-						🖥
+				?>
+					<div
+						class="project-card"
+						data-category="<?php echo esc_attr($category_slug); ?>"
+						data-title="<?php echo esc_attr(get_the_title()); ?>"
+						data-desc="<?php echo esc_attr($case_description ? $case_description : get_the_excerpt()); ?>"
+						data-tags="<?php
+									if ($tags && ! is_wp_error($tags)) {
+										echo esc_attr(implode(', ', wp_list_pluck($tags, 'name')));
+									}
+									?>"
+						data-bg="<?php echo esc_attr($bg_gradient ? $bg_gradient : 'linear-gradient(135deg, #0a2540, #0e3254, #050d1a)'); ?>"
+						data-duration="<?php echo esc_attr($project_duration ? $project_duration : '—'); ?>"
+						data-result="<?php echo esc_attr($project_result ? $project_result : '—'); ?>">
+						<div class="project-img">
+							<?php if ($img_src) : ?>
+								<img
+									src="<?php echo esc_url($img_src); ?>"
+									alt="<?php echo esc_attr(get_the_title()); ?>"
+									style="width: 100%; height: 100%; object-fit: cover">
+							<?php else : ?>
+								<div class="mockup" style="background: <?php echo esc_attr($bg_gradient ? $bg_gradient : 'var(--bg-card)'); ?>;">
+									🖥
+								</div>
+							<?php endif; ?>
+							<div class="project-overlay">
+								<button class="btn btn-primary open-case-btn">
+									Смотреть кейс
+								</button>
+							</div>
+						</div>
+						<div class="project-info">
+							<h4><?php echo esc_html(get_the_title()); ?></h4>
+							<p><?php echo esc_html(get_the_excerpt()); ?></p>
+							<?php if ($tags && ! is_wp_error($tags)) : ?>
+								<div class="project-tags">
+									<?php foreach ($tags as $tag) : ?>
+										<span><?php echo esc_html($tag->name); ?></span>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+						</div>
 					</div>
-					<?php endif; ?>
-					<div class="project-overlay">
-						<button class="btn btn-primary open-case-btn">
-							Смотреть кейс
-						</button>
-					</div>
-				</div>
-				<div class="project-info">
-					<h4><?php echo esc_html( get_the_title() ); ?></h4>
-					<p><?php echo esc_html( get_the_excerpt() ); ?></p>
-					<?php if ( $tags && ! is_wp_error( $tags ) ) : ?>
-					<div class="project-tags">
-						<?php foreach ( $tags as $tag ) : ?>
-						<span><?php echo esc_html( $tag->name ); ?></span>
-						<?php endforeach; ?>
-					</div>
-					<?php endif; ?>
-				</div>
+				<?php endwhile; ?>
 			</div>
-			<?php endwhile; ?>
-		</div>
-		<?php wp_reset_postdata(); ?>
+			<?php wp_reset_postdata(); ?>
 		<?php else : ?>
-		<p style="text-align: center; color: var(--text-muted);">
-			<?php esc_html_e( 'Проекты ещё не добавлены. Загляните позже!', 'lab-mark' ); ?>
-		</p>
+			<p style="text-align: center; color: var(--text-muted);">
+				<?php esc_html_e('Проекты ещё не добавлены. Загляните позже!', 'lab-mark'); ?>
+			</p>
 		<?php endif; ?>
 	</div>
 </section>
@@ -451,10 +450,9 @@ get_header();
 		<div class="about-content">
 			<div class="about-img animate">
 				<img
-					src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+					src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/team.jpg'); ?>"
 					alt="Наша команда за работой"
-					style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"
-				>
+					style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
 			</div>
 			<div class="about-text animate">
 				<h2>Больше, чем просто разработчики</h2>
@@ -774,7 +772,9 @@ get_header();
 <!-- 8. FAQ -->
 <section class="faq section-padding" id="faq">
 	<div class="container">
-		<div class="section-header"><h2>Частые вопросы</h2></div>
+		<div class="section-header">
+			<h2>Частые вопросы</h2>
+		</div>
 		<div class="faq-list">
 			<div class="faq-item animate">
 				<div class="faq-question">
@@ -851,30 +851,25 @@ get_header();
 						type="text"
 						class="form-input"
 						placeholder="Ваше имя"
-						required
-					>
+						required>
 					<input
 						type="tel"
 						class="form-input"
 						placeholder="Телефон"
-						required
-					>
+						required>
 					<input
 						type="email"
 						class="form-input full-width"
-						placeholder="Email"
-					>
+						placeholder="Email">
 					<textarea
 						class="form-input full-width"
 						placeholder="Кратко опишите задачу..."
-						rows="4"
-					></textarea>
+						rows="4"></textarea>
 				</div>
 				<button
 					type="submit"
 					class="btn btn-primary"
-					style="width: 100%; padding: 16px"
-				>
+					style="width: 100%; padding: 16px">
 					Отправить заявку
 				</button>
 			</form>
@@ -895,8 +890,7 @@ get_header();
 					<img
 						src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
 						alt="Как выбрать подрядчика для разработки сайта"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
+						style="width: 100%; height: 100%; object-fit: cover">
 				</div>
 				<div class="article-content">
 					<span class="article-tag">Советы</span>
@@ -909,8 +903,7 @@ get_header();
 					<img
 						src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 						alt="Почему важна техподдержка после запуска"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
+						style="width: 100%; height: 100%; object-fit: cover">
 				</div>
 				<div class="article-content">
 					<span class="article-tag">Технологии</span>
@@ -923,8 +916,7 @@ get_header();
 					<img
 						src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
 						alt="Тренды веб-дизайна 2026 года"
-						style="width: 100%; height: 100%; object-fit: cover"
-					>
+						style="width: 100%; height: 100%; object-fit: cover">
 				</div>
 				<div class="article-content">
 					<span class="article-tag">Тренды</span>
