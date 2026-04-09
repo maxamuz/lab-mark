@@ -21,6 +21,18 @@
   --shadow-glow: 0 0 40px rgba(0, 163, 255, 0.08);
   --radius: 16px;
   --container: 1400px;
+
+  --tbl-bg: #ffffff;
+  --tbl-border: #e2e8f0;
+  --tbl-header-bg: #f8fafc;
+  --tbl-header-text: #475569;
+  --tbl-row-hover: #f1f5f9;
+  --tbl-accent: #3b82f6;
+  --tbl-accent-bg: #eff6ff;
+  --tbl-text: #1e293b;
+  --tbl-text-light: #334155;
+  --tbl-radius: 16px;
+  --tbl-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -56,6 +68,118 @@ a {
 }
 ul {
   list-style: none;
+}
+
+/* 📦 Базовая таблица */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--tbl-bg);
+  border-radius: var(--tbl-radius);
+  box-shadow: var(--tbl-shadow);
+  overflow: hidden;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--tbl-text);
+}
+
+/* 🔹 Шапка */
+thead tr {
+  background: var(--tbl-header-bg);
+  border-bottom: 2px solid var(--tbl-border);
+}
+
+th {
+  padding: 18px 24px;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  color: var(--tbl-header-text);
+}
+
+/* Сброс отступов у вложенных div (чтобы не ломали сетку) */
+th div,
+td div {
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔸 Строки тела */
+tbody tr {
+  transition: background 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+tbody tr:hover {
+  background: var(--tbl-row-hover);
+}
+
+td {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--tbl-border);
+  vertical-align: top;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 🏷️ Первая колонка: Этапы (стилизация в виде "бейджей") */
+td:first-child {
+  width: 28%;
+  min-width: 160px;
+}
+
+td:first-child strong {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--tbl-accent-bg);
+  color: var(--tbl-accent);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* 📝 Вторая колонка: Решения */
+td:last-child {
+  color: var(--tbl-text-light);
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  th,
+  td {
+    padding: 14px 16px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  td:first-child {
+    width: auto;
+    min-width: 140px;
+  }
 }
 
 .container {
