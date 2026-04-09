@@ -842,11 +842,12 @@ get_header();
 	<div class="container">
 		<div class="cta-box animate">
 			<h2>Обсудить проект</h2>
-			<p>
+			<p class="cta-box-text">
 				Оставьте заявку — свяжемся в течение 30 минут для бесплатной
 				консультации.
 			</p>
-			<form id="contactForm" onsubmit="handleFormSubmit(event)">
+			<?php echo do_shortcode('[contact-form-7 id="fc1dbbe" title="Главная форма"]'); ?>
+			<!-- <form id="contactForm" onsubmit="handleFormSubmit(event)">
 				<div class="form-grid">
 					<input
 						type="text"
@@ -873,7 +874,7 @@ get_header();
 					style="width: 100%; padding: 16px">
 					Отправить заявку
 				</button>
-			</form>
+			</form> -->
 		</div>
 	</div>
 </section>

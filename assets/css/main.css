@@ -820,14 +820,12 @@ footer .logo span {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* opacity: 0; */
   display: none;
   pointer-events: none;
   transition: opacity 0.3s ease;
   padding: 20px;
 }
 .modal-overlay.open {
-  /* opacity: 1; */
   display: flex;
   pointer-events: all;
 }
@@ -1406,7 +1404,10 @@ footer .logo span {
 }
 .cta-box p {
   color: var(--text-muted);
-  margin-bottom: 30px;
+  margin-bottom: 5px;
+}
+.cta-box p.cta-box-text {
+  margin-bottom: 15px;
 }
 .form-grid {
   display: grid;
@@ -1414,8 +1415,10 @@ footer .logo span {
   gap: 16px;
   margin-bottom: 20px;
 }
-.form-input {
+.form-grid input,
+.form-grid textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 15px 18px;
   background: var(--bg-deep);
   border: 1px solid var(--border-light);
@@ -1435,6 +1438,18 @@ footer .logo span {
 }
 .full-width {
   grid-column: 1 / -1;
+}
+.wpcf7-form input[type="submit"] {
+  background: #fff;
+  border: none;
+  width: 100%;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  border: none;
 }
 textarea.form-input {
   resize: vertical;
