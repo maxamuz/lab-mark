@@ -92,7 +92,7 @@
         }
       });
     },
-    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
   );
   document.querySelectorAll(".animate").forEach(function (el) {
     observer.observe(el);
@@ -103,11 +103,7 @@
     var typingSpan = document.querySelector(".typing");
     if (!typingSpan) return;
 
-    var phrases = [
-      "приносят прибыль",
-      "решают задачи",
-      "масштабируют бизнес",
-    ];
+    var phrases = ["приносят прибыль", "решают задачи", "масштабируют бизнес"];
     var phraseIndex = 0;
     var charIndex = 0;
     var isDeleting = false;
@@ -152,7 +148,7 @@
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      1000,
     );
     var renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -207,33 +203,72 @@
     });
   });
 
-  // --- ФИЛЬТРЫ ПОРТФОЛИО ---
-  var filterBtns = document.querySelectorAll(".filter-btn");
-  var projectCards = document.querySelectorAll(".project-card");
+  // === ФИЛЬТРЫ ПОРТФОЛИО ===
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
 
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      filterBtns.forEach(function (b) {
-        b.classList.remove("active");
-      });
-      btn.classList.add("active");
-      var filterValue = btn.getAttribute("data-filter");
+    // Если элементов нет — выходим, чтобы не было ошибок
+    if (!filterBtns.length || !projectCards.length) return;
 
-      projectCards.forEach(function (card) {
-        var category = card.getAttribute("data-category");
-        if (filterValue === "all" || category === filterValue) {
-          card.style.display = "block";
-          requestAnimationFrame(function () {
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // 1. Переключаем активный класс на кнопках
+        filterBtns.forEach(function (b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+
+        // 2. Получаем значение фильтра, нормализуем
+        const filterValue = btn
+          .getAttribute("data-filter")
+          .trim()
+          .toLowerCase();
+
+        // 3. Фильтруем карточки
+        projectCards.forEach(function (card) {
+          const categoryAttr = card.getAttribute("data-category") || "";
+          // Разбиваем на массив категорий (поддержка пробелов как разделителя)
+          const cardCategories = categoryAttr
+            .toLowerCase()
+            .split(/\s+/)
+            .filter(Boolean);
+
+          // Проверяем: "all" или вхождение категории в список
+          const shouldShow =
+            filterValue === "all" || cardCategories.includes(filterValue);
+
+          if (shouldShow) {
+            // Показываем карточку с анимацией
+            card.style.display = "block";
+            // Небольшая задержка для запуска CSS-transition
+            void card.offsetWidth; // принудительный reflow
             card.style.opacity = "1";
             card.style.transform = "translateY(0) scale(1)";
-          });
-        } else {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(20px) scale(0.95)";
-          setTimeout(function () {
-            card.style.display = "none";
-          }, 300);
-        }
+          } else {
+            // Скрываем карточку с анимацией
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px) scale(0.95)";
+
+            // После завершения анимации скрываем элемент
+            setTimeout(function () {
+              // Дополнительная проверка: не изменился ли фильтр за время анимации
+              const currentFilter = document
+                .querySelector(".filter-btn.active")
+                ?.getAttribute("data-filter")
+                ?.trim()
+                .toLowerCase();
+              const stillHidden =
+                currentFilter !== "all" &&
+                !cardCategories.includes(currentFilter);
+              if (stillHidden) {
+                card.style.display = "none";
+              }
+            }, 300); // 300ms — должно совпадать с duration в CSS transition
+          }
+        });
       });
     });
   });
@@ -277,9 +312,12 @@
           var modalDuration = document.getElementById("modalMetaDuration");
           var modalMetaTech = document.getElementById("modalMetaTech");
           var modalMetaResult = document.getElementById("modalMetaResult");
-          if (modalDuration) modalDuration.textContent = card.dataset.duration || "—";
-          if (modalMetaTech) modalMetaTech.textContent = card.dataset.tags || "—";
-          if (modalMetaResult) modalMetaResult.textContent = card.dataset.result || "—";
+          if (modalDuration)
+            modalDuration.textContent = card.dataset.duration || "—";
+          if (modalMetaTech)
+            modalMetaTech.textContent = card.dataset.tags || "—";
+          if (modalMetaResult)
+            modalMetaResult.textContent = card.dataset.result || "—";
 
           // Получаем src изображения из карточки
           var cardImg = card.querySelector(".project-img img");

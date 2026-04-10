@@ -376,9 +376,15 @@ get_header();
 					$preview_url      = get_post_meta(get_the_ID(), '_labmark_preview_url', true);
 					$bg_gradient      = get_post_meta(get_the_ID(), '_labmark_bg_gradient', true);
 
-					// Получаем категорию (для фильтра).
+					// ✅ Получаем ВСЕ категории проекта для фильтра (через пробел)
 					$cats = get_the_terms(get_the_ID(), 'project_category');
-					$category_slug = $cats && ! is_wp_error($cats) ? $cats[0]->slug : '';
+					$category_slugs = '';
+					if ($cats && ! is_wp_error($cats)) {
+						$slugs = array_map(function ($cat) {
+							return strtolower($cat->slug);
+						}, $cats);
+						$category_slugs = implode(' ', $slugs);
+					}
 
 					// Получаем метки (для project-tags).
 					$tags = get_the_terms(get_the_ID(), 'project_tag');
@@ -393,7 +399,7 @@ get_header();
 				?>
 					<div
 						class="project-card"
-						data-category="<?php echo esc_attr($category_slug); ?>"
+						data-category="<?php echo esc_attr($category_slugs); ?>"
 						data-title="<?php echo esc_attr(get_the_title()); ?>"
 						data-desc="<?php echo esc_attr($case_description ? $case_description : get_the_excerpt()); ?>"
 						data-tags="<?php
