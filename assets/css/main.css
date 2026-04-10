@@ -1870,7 +1870,7 @@ footer {
   top: 32px;
 }
 .admin-bar #hero-bg {
-  top: -58px;
+  top: -72px;
 }
 
 main#primary {
@@ -1879,6 +1879,16 @@ main#primary {
 
 .entry-header {
   padding: 35px 0;
+}
+
+.single h1 {
+  color: var(--accent);
+}
+
+.single h2 {
+  margin-bottom: 24px;
+  line-height: 1.8;
+  color: var(--text-main);
 }
 
 .single p {
