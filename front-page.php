@@ -56,6 +56,31 @@ get_header();
 						<span class="code-line">&nbsp;&nbsp;console.log(<span class="cl-green">'App started'</span>);</span>
 						<span class="code-line">}</span>
 
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">project</span> = {</span>
+						<span class="code-line">&nbsp;&nbsp;type: <span class="cl-green">'Custom Development'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;quality: <span class="cl-green">'Premium'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;support: <span class="cl-green">'24/7'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;stack: [<span class="cl-yellow">'React'</span>, <span class="cl-yellow">'Node.js'</span>]</span>
+						<span class="code-line">};</span>
+
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">features</span> = [</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Authentication'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Real-time Updates'</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-green">'Data Encryption'</span></span>
+						<span class="code-line">];</span>
+
+						<span class="code-line"><span class="cl-purple">const</span> <span class="cl-blue">config</span> = {</span>
+						<span class="code-line">&nbsp;&nbsp;debug: <span class="cl-blue">true</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;port: <span class="cl-orange">3000</span>,</span>
+						<span class="code-line">&nbsp;&nbsp;ssl: <span class="cl-blue">false</span></span>
+						<span class="code-line">};</span>
+
+						<span class="code-line"><span class="cl-purple">function</span> <span class="cl-blue">initApp</span><span class="cl-blue">()</span> {</span>
+						<span class="code-line">&nbsp;&nbsp;<span class="cl-comment">// Initialize core modules</span></span>
+						<span class="code-line">&nbsp;&nbsp;console.log(<span class="cl-green">'App started'</span>);</span>
+						<span class="code-line">}</span>
+
+
 						<span class="code-line"><span class="cl-purple">export default</span> { project, features, config, initApp };</span>
 					</div>
 				</div>
