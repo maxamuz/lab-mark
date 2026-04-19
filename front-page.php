@@ -140,23 +140,23 @@ get_header();
 				<h3>Разработка <span class="badge">Full-stack</span></h3>
 				<ul class="service-list">
 					<li>
-						<span>Лендинги</span>
+						<a href="/services/razrabotka-lendingov-pod-klyuch">Лендинги</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Корпоративные сайты</span>
+						<a href="/services/razrabotka-korporativnyh-sajtov">Корпоративные сайты</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Интернет-магазины</span>
+						<a href="/services/razrabotka-internet-magazinov">Интернет-магазины</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Веб-сервисы и CRM</span>
+						<a href="/services/razrabotka-web-servisov-i-crm">Веб-сервисы и CRM</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>API-интеграции</span>
+						<a href="/services/api-integracii">API-интеграции</a>
 						<span class="arrow-icon">→</span>
 					</li>
 				</ul>
@@ -165,23 +165,23 @@ get_header();
 				<h3>Техподдержка <span class="badge">Сопровождение</span></h3>
 				<ul class="service-list">
 					<li>
-						<span>Обновление контента</span>
+						<a href="/services/obnovlenie-kontenta">Обновление контента</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Мониторинг безопасности</span>
+						<a href="/services/monitoring-bezopasnosti">Мониторинг безопасности</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Оптимизация скорости</span>
+						<a href="/services/optimizaciya-skorosti">Оптимизация скорости</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Доработка функционала</span>
+						<a href="/services/dorabotka-funkcionala">Доработка функционала</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<span>Выделенный хостинг</span>
+						<a href="/services/vydelennyj-hosting">Выделенный хостинг</a>
 						<span class="arrow-icon">→</span>
 					</li>
 				</ul>
