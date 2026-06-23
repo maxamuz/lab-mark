@@ -448,9 +448,9 @@ get_header();
 								</div>
 							<?php endif; ?>
 							<div class="project-overlay">
-								<button class="btn btn-primary open-case-btn">
+								<a href="<?php echo esc_url(get_permalink()); ?>" class="btn btn-primary">
 									Смотреть кейс
-								</button>
+								</a>
 							</div>
 						</div>
 						<div class="project-info">
