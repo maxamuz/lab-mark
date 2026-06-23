@@ -165,7 +165,7 @@ get_header();
 				<h3>Разработка <span class="badge">Full-stack</span></h3>
 				<ul class="service-list">
 					<li>
-						<a href="/services/razrabotka-lendingov-pod-klyuch">Лендинги</a>
+						<a href="/services/razrabotka-lendingov">Лендинги</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
