@@ -169,15 +169,15 @@ get_header();
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/razrabotka-korporativnyh-sajtov-pod-klyuch">Корпоративные сайты</a>
+						<a href="/services/razrabotka-korporativnyh-sajtov">Корпоративные сайты</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/razrabotka-internet-magazinov-pod-klyuch">Интернет-магазины</a>
+						<a href="/services/razrabotka-internet-magazinov">Интернет-магазины</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/seo-optimizacziya-i-prodvizhenie-sajtov">SEO-оптимизация и продвижение</a>
+						<a href="/services/seo-optimizacziya">SEO-оптимизация и продвижение</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
@@ -185,11 +185,11 @@ get_header();
 						<span class="arrow-icon">→</span>
 					</li>
 					<!-- <li>
-						<a href="/services/razrabotka-veb-servisov-i-crm-pod-klyuch">Веб-сервисы и CRM</a>
+						<a href="/services/razrabotka-veb-servisov-i-crm">Веб-сервисы и CRM</a>
 						<span class="arrow-icon">→</span>
 					</li> -->
 					<!-- <li>
-						<a href="/services/razrabotka-i-nastrojka-api-integraczij-pod-klyuch">API-интеграции</a>
+						<a href="/services/razrabotka-i-nastrojka-api-integraczij">API-интеграции</a>
 						<span class="arrow-icon">→</span>
 					</li> -->
 				</ul>
