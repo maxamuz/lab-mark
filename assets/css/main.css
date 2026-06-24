@@ -1526,7 +1526,6 @@ footer .logo span {
 }
 .cta-box p {
   color: var(--text-muted);
-  margin-bottom: 5px;
 }
 .cta-box p.cta-box-text {
   margin-bottom: 15px;
@@ -1895,6 +1894,22 @@ main#primary {
   margin-bottom: 20px;
   line-height: 1.8;
   color: var(--text-main);
+}
+
+.single .cta-box p {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.single .cta-box h2 {
+  color: var(--text-main);
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.single .cta-box p.cta-box-text {
+  margin-bottom: 15px;
 }
 
 .tpgb-container-row.tpgb-container-inline:not(.tpgb-container-row-editor) > p {

@@ -165,48 +165,64 @@ get_header();
 				<h3>Разработка <span class="badge">Full-stack</span></h3>
 				<ul class="service-list">
 					<li>
-						<a href="/services/razrabotka-lendingov-pod-klyuch">Лендинги</a>
+						<a href="/services/lendingi">Лендинги</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/razrabotka-korporativnyh-sajtov">Корпоративные сайты</a>
+						<a href="/services/razrabotka-korporativnyh-sajtov-pod-klyuch">Корпоративные сайты</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/razrabotka-internet-magazinov">Интернет-магазины</a>
+						<a href="/services/razrabotka-internet-magazinov-pod-klyuch">Интернет-магазины</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/razrabotka-web-servisov-i-crm">Веб-сервисы и CRM</a>
+						<a href="/services/seo-optimizacziya-i-prodvizhenie-sajtov">SEO-оптимизация и продвижение</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/api-integracii">API-интеграции</a>
+						<a href="/services/tehnicheskij-audit-sajtov">Технический аудит сайтов</a>
 						<span class="arrow-icon">→</span>
 					</li>
+					<!-- <li>
+						<a href="/services/razrabotka-veb-servisov-i-crm-pod-klyuch">Веб-сервисы и CRM</a>
+						<span class="arrow-icon">→</span>
+					</li> -->
+					<!-- <li>
+						<a href="/services/razrabotka-i-nastrojka-api-integraczij-pod-klyuch">API-интеграции</a>
+						<span class="arrow-icon">→</span>
+					</li> -->
 				</ul>
 			</div>
 			<div class="service-column highlight animate">
 				<h3>Техподдержка <span class="badge">Сопровождение</span></h3>
 				<ul class="service-list">
 					<li>
-						<a href="/services/obnovlenie-kontenta">Обновление контента</a>
+						<a href="/services/obnovlenie-kontenta-na-sajte">Обновление контента</a>
+						<span class="arrow-icon">→</span>
+					</li>
+					<!-- <li>
+						<a href="/services/monitoring-bezopasnosti-sajta">Мониторинг безопасности</a>
+						<span class="arrow-icon">→</span>
+					</li> -->
+					<!-- <li>
+						<a href="/services/optimizacziya-skorosti-zagruzki-sajta-pod-klyuch">Оптимизация скорости</a>
+						<span class="arrow-icon">→</span>
+					</li> -->
+					<li>
+						<a href="/services/dorabotka-funkczionala-sajta">Доработка функционала</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/monitoring-bezopasnosti">Мониторинг безопасности</a>
+						<a href="/services/tehpodderzhka-sajtov-na-drupal">Техподдержка сайтов Drupal 7 и выше</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/optimizaciya-skorosti">Оптимизация скорости</a>
+						<a href="/services/tehpodderzhka-sajtov-na-wordpress">Техподдержка сайтов WordPress</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
-						<a href="/services/dorabotka-funkcionala">Доработка функционала</a>
-						<span class="arrow-icon">→</span>
-					</li>
-					<li>
-						<a href="/services/vydelennyj-hosting">Выделенный хостинг</a>
+						<a href="/services/tehpodderzhka-sajtov-na-1s-bitriks">Техподдержка сайтов 1С Битрикс</a>
 						<span class="arrow-icon">→</span>
 					</li>
 				</ul>
