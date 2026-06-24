@@ -476,7 +476,7 @@ get_header();
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>
-								<span class="btn btn-primary open-case-btn">Смотреть кейс</span>
+								<span class="btn btn-primary">Смотреть кейс</span>
 							</div>
 
 						</div>
