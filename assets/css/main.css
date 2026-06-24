@@ -865,6 +865,8 @@ footer .logo span {
   background: var(--bg-card);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .project-card.hide {
   opacity: 0;
@@ -883,6 +885,7 @@ footer .logo span {
   height: 260px;
   position: relative;
   overflow: hidden;
+  flex: 1;
 }
 .project-img .mockup {
   width: 100%;
@@ -922,8 +925,12 @@ footer .logo span {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+.project-info .btn {
+  text-align: center;
+}
 .project-tags {
   margin-top: 15px;
+  margin-bottom: 25px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;

@@ -460,7 +460,7 @@ get_header();
 									<img
 										src="<?php echo esc_url($img_src); ?>"
 										alt="<?php echo esc_attr(get_the_title()); ?>"
-										style="width: 100%; height: 100%; object-fit: cover">
+										style="width: 100%; height: 245px; object-fit: cover">
 								<?php else : ?>
 									<div class="mockup" style="background: <?php echo esc_attr($bg_gradient ? $bg_gradient : 'var(--bg-card)'); ?>;">
 										🖥
