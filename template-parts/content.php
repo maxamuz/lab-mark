@@ -58,46 +58,7 @@
 		);
 		?>
 	</div><!-- .entry-content -->
-	<section class="cta-section section-padding" id="cta">
-		<div class="container">
-			<div class="cta-box animate">
-				<h2>Обсудить проект</h2>
-				<p class="cta-box-text">
-					Оставьте заявку — свяжемся в течение 30 минут для бесплатной
-					консультации.
-				</p>
-				<?php echo do_shortcode('[contact-form-7 id="fc1dbbe" title="Главная форма"]'); ?>
-				<!-- <form id="contactForm" onsubmit="handleFormSubmit(event)">
-				<div class="form-grid">
-					<input
-						type="text"
-						class="form-input"
-						placeholder="Ваше имя"
-						required>
-					<input
-						type="tel"
-						class="form-input"
-						placeholder="Телефон"
-						required>
-					<input
-						type="email"
-						class="form-input full-width"
-						placeholder="Email">
-					<textarea
-						class="form-input full-width"
-						placeholder="Кратко опишите задачу..."
-						rows="4"></textarea>
-				</div>
-				<button
-					type="submit"
-					class="btn btn-primary"
-					style="width: 100%; padding: 16px">
-					Отправить заявку
-				</button>
-			</form> -->
-			</div>
-		</div>
-	</section>
+
 	<footer class="entry-footer">
 		<?php lab_mark_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
