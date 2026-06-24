@@ -181,6 +181,10 @@ get_header();
 						<span class="arrow-icon">→</span>
 					</li> -->
 					<li>
+						<a href="/services/cotirating">Напонение контентом (копирайтинг)</a>
+						<span class="arrow-icon">→</span>
+					</li>
+					<li>
 						<a href="/services/tehnicheskij-audit-sajtov">Технический аудит сайтов</a>
 						<span class="arrow-icon">→</span>
 					</li>
