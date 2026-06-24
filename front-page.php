@@ -176,10 +176,10 @@ get_header();
 						<a href="/services/razrabotka-internet-magazinov">Интернет-магазины</a>
 						<span class="arrow-icon">→</span>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="/services/seo-optimizacziya">SEO-оптимизация и продвижение</a>
 						<span class="arrow-icon">→</span>
-					</li>
+					</li> -->
 					<li>
 						<a href="/services/tehnicheskij-audit-sajtov">Технический аудит сайтов</a>
 						<span class="arrow-icon">→</span>
