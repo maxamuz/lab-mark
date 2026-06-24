@@ -165,6 +165,7 @@ function lab_mark_scripts()
 }
 add_action('wp_enqueue_scripts', 'lab_mark_scripts');
 
+
 /**
  * Implement the Custom Header feature.
  */

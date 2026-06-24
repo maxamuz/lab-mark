@@ -165,7 +165,7 @@ get_header();
 				<h3>Разработка <span class="badge">Full-stack</span></h3>
 				<ul class="service-list">
 					<li>
-						<a href="/services/lendingi">Лендинги</a>
+						<a href="/services/razrabotka-lendingov">Лендинги</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
@@ -438,49 +438,49 @@ get_header();
 						$img_src = esc_url($preview_url);
 					}
 				?>
-					<div
-						class="project-card"
+					<!-- Оборачиваем всю карточку в ссылку -->
+					<a href="<?php echo esc_url(get_permalink()); ?>" class="project-card-link"
 						data-category="<?php echo esc_attr($category_slugs); ?>"
 						data-title="<?php echo esc_attr(get_the_title()); ?>"
 						data-desc="<?php echo esc_attr($case_description ? $case_description : get_the_excerpt()); ?>"
-						data-tags="<?php
-									if ($tags && ! is_wp_error($tags)) {
+						data-tags="<?php if ($tags && ! is_wp_error($tags)) {
 										echo esc_attr(implode(', ', wp_list_pluck($tags, 'name')));
-									}
-									?>"
+									} ?>"
 						data-bg="<?php echo esc_attr($bg_gradient ? $bg_gradient : 'linear-gradient(135deg, #0a2540, #0e3254, #050d1a)'); ?>"
 						data-duration="<?php echo esc_attr($project_duration ? $project_duration : '—'); ?>"
 						data-result="<?php echo esc_attr($project_result ? $project_result : '—'); ?>"
 						data-permalink="<?php echo esc_url(get_permalink()); ?>">
-						<div class="project-img">
-							<?php if ($img_src) : ?>
-								<img
-									src="<?php echo esc_url($img_src); ?>"
-									alt="<?php echo esc_attr(get_the_title()); ?>"
-									style="width: 100%; height: 100%; object-fit: cover">
-							<?php else : ?>
-								<div class="mockup" style="background: <?php echo esc_attr($bg_gradient ? $bg_gradient : 'var(--bg-card)'); ?>;">
-									🖥
+						<div class="project-card">
+							<div class="project-img">
+								<?php if ($img_src) : ?>
+									<img
+										src="<?php echo esc_url($img_src); ?>"
+										alt="<?php echo esc_attr(get_the_title()); ?>"
+										style="width: 100%; height: 100%; object-fit: cover">
+								<?php else : ?>
+									<div class="mockup" style="background: <?php echo esc_attr($bg_gradient ? $bg_gradient : 'var(--bg-card)'); ?>;">
+										🖥
+									</div>
+								<?php endif; ?>
+								<div class="project-overlay">
+
 								</div>
-							<?php endif; ?>
-							<div class="project-overlay">
-								<button class="btn btn-primary open-case-btn">
-									Смотреть кейс
-								</button>
 							</div>
+							<div class="project-info">
+								<h4><?php echo esc_html(get_the_title()); ?></h4>
+								<p><?php echo esc_html(get_the_excerpt()); ?></p>
+								<?php if ($tags && ! is_wp_error($tags)) : ?>
+									<div class="project-tags">
+										<?php foreach ($tags as $tag) : ?>
+											<span><?php echo esc_html($tag->name); ?></span>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+								<span class="btn btn-primary open-case-btn">Смотреть кейс</span>
+							</div>
+
 						</div>
-						<div class="project-info">
-							<h4><?php echo esc_html(get_the_title()); ?></h4>
-							<p><?php echo esc_html(get_the_excerpt()); ?></p>
-							<?php if ($tags && ! is_wp_error($tags)) : ?>
-								<div class="project-tags">
-									<?php foreach ($tags as $tag) : ?>
-										<span><?php echo esc_html($tag->name); ?></span>
-									<?php endforeach; ?>
-								</div>
-							<?php endif; ?>
-						</div>
-					</div>
+					</a>
 				<?php endwhile; ?>
 			</div>
 			<?php wp_reset_postdata(); ?>
@@ -591,7 +591,6 @@ get_header();
 			<div class="tech-item animate" data-level="advanced">
 				<div class="tech-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<path d="M12 2L2 19h20L12 2z" />
 						<path d="M12 8l-4 7h8l-4-7z" />
 					</svg>
 				</div>
