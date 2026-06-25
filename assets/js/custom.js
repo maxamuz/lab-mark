@@ -245,4 +245,99 @@
       }
     });
   });
+  // === ФИЛЬТРЫ ПОРТФОЛИО ===
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    // ❌ Старый код: находил .project-card, который теперь внутри <a>
+    // const projectCards = document.querySelectorAll(".project-card");
+
+    // ✅ Новый код: находим ссылки, оборачивающие карточки
+    const projectCardLinks = document.querySelectorAll(
+      ".portfolio-grid .project-card-link",
+    ); // Используем более специфичный селектор
+
+    // Если элементов нет — выходим, чтобы не было ошибок
+    // ❌ Старый код:
+    // if (!filterBtns.length || !projectCards.length) return;
+
+    // ✅ Новый код:
+    if (!filterBtns.length || !projectCardLinks.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // 1. Переключаем активный класс на кнопках
+        filterBtns.forEach(function (b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+
+        // 2. Получаем значение фильтра, нормализуем
+        const filterValue = btn
+          .getAttribute("data-filter")
+          .trim()
+          .toLowerCase();
+
+        // 3. Фильтруем карточки (теперь это ссылки .project-card-link)
+        // ❌ Старый код: projectCards.forEach(function (card) {
+        projectCardLinks.forEach(function (cardLink) {
+          // Переименовал переменную для ясности
+
+          // ❌ Старый код: const categoryAttr = card.getAttribute("data-category") || "";
+          // ✅ Новый код: получаем атрибут с родительской ссылки
+          const categoryAttr = cardLink.getAttribute("data-category") || "";
+
+          // Разбиваем на массив категорий (поддержка пробелов как разделителя)
+          const cardCategories = categoryAttr
+            .toLowerCase()
+            .split(/\s+/)
+            .filter(Boolean);
+
+          // Проверяем: "all" или вхождение категории в список
+          const shouldShow =
+            filterValue === "all" || cardCategories.includes(filterValue);
+
+          // ❌ Старый код: обращался к card.style.display и т.д.
+          // ✅ Новый код: обращаемся к cardLink.style.display и т.д.
+          if (shouldShow) {
+            // Показываем карточку с анимацией (через ссылку)
+            cardLink.style.display = "block"; // Изменено: card -> cardLink
+            // Небольшая задержка для запуска CSS-transition
+            void cardLink.offsetWidth; // принудительный reflow // Изменено: card -> cardLink
+            cardLink.style.opacity = "1"; // Изменено: card -> cardLink
+            cardLink.style.transform = "translateY(0) scale(1)"; // Изменено: card -> cardLink
+          } else {
+            // Скрываем карточку с анимацией (через ссылку)
+            cardLink.style.opacity = "0"; // Изменено: card -> cardLink
+            cardLink.style.transform = "translateY(20px) scale(0.95)"; // Изменено: card -> cardLink
+
+            // После завершения анимации скрываем элемент
+            setTimeout(function () {
+              // Дополнительная проверка: не изменился ли фильтр за время анимации
+              const currentFilter = document
+                .querySelector(".filter-btn.active")
+                ?.getAttribute("data-filter")
+                ?.trim()
+                .toLowerCase();
+              // ❌ Старый код: const stillHidden = currentFilter !== "all" && !cardCategories.includes(currentFilter);
+              // ✅ Новый код: снова получаем атрибут с cardLink
+              const categoryAttrForCheck =
+                cardLink.getAttribute("data-category") || "";
+              const cardCategoriesForCheck = categoryAttrForCheck
+                .toLowerCase()
+                .split(/\s+/)
+                .filter(Boolean);
+              const stillHidden =
+                currentFilter !== "all" &&
+                !cardCategoriesForCheck.includes(currentFilter);
+              if (stillHidden) {
+                cardLink.style.display = "none"; // Изменено: card -> cardLink
+              }
+            }, 300); // 300ms — должно совпадать с duration в CSS transition
+          }
+        });
+      });
+    });
+  });
 })();
