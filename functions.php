@@ -145,6 +145,7 @@ function lab_mark_scripts()
 {
 	// Main stylesheet from assets
 	wp_enqueue_style('lab-mark-main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION);
+	wp_enqueue_style('lab-mark-media', get_template_directory_uri() . '/assets/css/media.css', array(), _S_VERSION);
 
 	// Theme style.css for WordPress overrides
 	wp_enqueue_style('lab-mark-style', get_stylesheet_uri(), array('lab-mark-main'), _S_VERSION);

@@ -141,7 +141,36 @@
   // Three.js background
   function initThreeJS() {
     var heroBg = document.getElementById("hero-bg");
-    if (!heroBg || typeof THREE === "undefined") return;
+    if (!heroBg) return;
+
+    // Ждём THREE если ещё не загружен
+    if (typeof THREE === "undefined") {
+      var attempts = 0;
+      var interval = setInterval(function () {
+        attempts++;
+        if (typeof THREE !== "undefined") {
+          clearInterval(interval);
+          initThreeJS();
+        } else if (attempts > 20) {
+          clearInterval(interval); // Прекращаем через ~2 сек
+        }
+      }, 100);
+      return;
+    }
+
+    // Чистим предыдущий canvas если есть (защита от двойного вызова)
+    var existing = heroBg.querySelector("canvas");
+    if (existing) heroBg.removeChild(existing);
+
+    // Проверяем поддержку WebGL
+    var testCanvas = document.createElement("canvas");
+    var gl =
+      testCanvas.getContext("webgl") ||
+      testCanvas.getContext("experimental-webgl");
+    if (!gl) {
+      console.warn("WebGL не поддерживается");
+      return;
+    }
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(
@@ -150,12 +179,13 @@
       0.1,
       1000,
     );
+
     var renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: true,
     });
-
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
     heroBg.appendChild(renderer.domElement);
 
     var geometry = new THREE.IcosahedronGeometry(10, 1);
@@ -167,25 +197,38 @@
     });
     var sphere = new THREE.Mesh(geometry, material);
     scene.add(sphere);
-
     camera.position.z = 30;
 
+    var animationId;
     function animate() {
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
       sphere.rotation.x += 0.005;
       sphere.rotation.y += 0.005;
       renderer.render(scene, camera);
     }
-
     animate();
 
-    window.addEventListener("resize", function () {
+    function onResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    window.addEventListener("resize", onResize);
+
+    // Очистка при выгрузке страницы
+    window.addEventListener("beforeunload", function () {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", onResize);
+      renderer.dispose();
     });
   }
-  initThreeJS();
+
+  // Безопасный запуск: после DOM + после загрузки скриптов
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThreeJS);
+  } else {
+    initThreeJS();
+  }
 
   // Маска телефона
   document.querySelectorAll('input[type="tel"]').forEach(function (input) {
