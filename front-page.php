@@ -570,7 +570,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">Laravel</span>
+					<span class="tech-name">PHP</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="95"></div>
 					</div>
@@ -599,7 +599,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">Vue.js</span>
+					<span class="tech-name">JavaScrit</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="85"></div>
 					</div>
@@ -615,7 +615,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">Node.js</span>
+					<span class="tech-name">CSS</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="80"></div>
 					</div>
@@ -632,7 +632,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">Python</span>
+					<span class="tech-name">HTML</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="75"></div>
 					</div>
