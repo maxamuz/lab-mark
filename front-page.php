@@ -202,19 +202,19 @@ get_header();
 				<h3>Техподдержка <span class="badge">Сопровождение</span></h3>
 				<ul class="service-list">
 					<li>
-						<a href="/services/obnovlenie-kontenta-na-sajte">Обновление контента</a>
+						<a href="/services/obnovlenie-kontenta">Обновление контента</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<!-- <li>
-						<a href="/services/monitoring-bezopasnosti-sajta">Мониторинг безопасности</a>
+						<a href="/services/monitoring-bezopasnosti">Мониторинг безопасности</a>
 						<span class="arrow-icon">→</span>
 					</li> -->
 					<!-- <li>
-						<a href="/services/optimizacziya-skorosti-zagruzki-sajta-pod-klyuch">Оптимизация скорости</a>
+						<a href="/services/optimizacziya-skorosti-zagruzki">Оптимизация скорости</a>
 						<span class="arrow-icon">→</span>
 					</li> -->
 					<li>
-						<a href="/services/dorabotka-funkczionala-sajta">Доработка функционала</a>
+						<a href="/services/dorabotka-funkczionala">Доработка функционала</a>
 						<span class="arrow-icon">→</span>
 					</li>
 					<li>
