@@ -570,7 +570,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">PHP</span>
+					<span class="tech-name">1С Битрикс</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="95"></div>
 					</div>
@@ -585,7 +585,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">React</span>
+					<span class="tech-name">Drupal</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="90"></div>
 					</div>
@@ -647,7 +647,7 @@ get_header();
 					</svg>
 				</div>
 				<div class="tech-info">
-					<span class="tech-name">Google Analytics</span>
+					<span class="tech-name">PHP</span>
 					<div class="skill-bar">
 						<div class="skill-fill" data-width="90"></div>
 					</div>
