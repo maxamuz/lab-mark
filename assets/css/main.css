@@ -621,6 +621,9 @@ footer .logo span {
   opacity: 1;
   transform: translateX(0);
 }
+.service-list li:hover path {
+  fill: #fff;
+}
 
 /* --- 4. Цены --- */
 .pricing {
