@@ -612,7 +612,7 @@ footer .logo span {
 }
 .arrow-icon {
   font-weight: bold;
-  opacity: 0;
+  opacity: 1;
   transition: 0.3s;
   transform: translateX(-10px);
   color: var(--accent);
