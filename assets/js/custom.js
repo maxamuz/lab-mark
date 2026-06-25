@@ -206,10 +206,20 @@
   // === ФИЛЬТРЫ ПОРТФОЛИО ===
   document.addEventListener("DOMContentLoaded", function () {
     const filterBtns = document.querySelectorAll(".filter-btn");
-    const projectCards = document.querySelectorAll(".project-card");
+    // ❌ Старый код: находил .project-card, который теперь внутри <a>
+    // const projectCards = document.querySelectorAll(".project-card");
+
+    // ✅ Новый код: находим ссылки, оборачивающие карточки
+    const projectCardLinks = document.querySelectorAll(
+      ".portfolio-grid .project-card-link",
+    ); // Используем более специфичный селектор
 
     // Если элементов нет — выходим, чтобы не было ошибок
-    if (!filterBtns.length || !projectCards.length) return;
+    // ❌ Старый код:
+    // if (!filterBtns.length || !projectCards.length) return;
+
+    // ✅ Новый код:
+    if (!filterBtns.length || !projectCardLinks.length) return;
 
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function (e) {
@@ -227,9 +237,15 @@
           .trim()
           .toLowerCase();
 
-        // 3. Фильтруем карточки
-        projectCards.forEach(function (card) {
-          const categoryAttr = card.getAttribute("data-category") || "";
+        // 3. Фильтруем карточки (теперь это ссылки .project-card-link)
+        // ❌ Старый код: projectCards.forEach(function (card) {
+        projectCardLinks.forEach(function (cardLink) {
+          // Переименовал переменную для ясности
+
+          // ❌ Старый код: const categoryAttr = card.getAttribute("data-category") || "";
+          // ✅ Новый код: получаем атрибут с родительской ссылки
+          const categoryAttr = cardLink.getAttribute("data-category") || "";
+
           // Разбиваем на массив категорий (поддержка пробелов как разделителя)
           const cardCategories = categoryAttr
             .toLowerCase()
@@ -240,17 +256,19 @@
           const shouldShow =
             filterValue === "all" || cardCategories.includes(filterValue);
 
+          // ❌ Старый код: обращался к card.style.display и т.д.
+          // ✅ Новый код: обращаемся к cardLink.style.display и т.д.
           if (shouldShow) {
-            // Показываем карточку с анимацией
-            card.style.display = "block";
+            // Показываем карточку с анимацией (через ссылку)
+            cardLink.style.display = "block"; // Изменено: card -> cardLink
             // Небольшая задержка для запуска CSS-transition
-            void card.offsetWidth; // принудительный reflow
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0) scale(1)";
+            void cardLink.offsetWidth; // принудительный reflow // Изменено: card -> cardLink
+            cardLink.style.opacity = "1"; // Изменено: card -> cardLink
+            cardLink.style.transform = "translateY(0) scale(1)"; // Изменено: card -> cardLink
           } else {
-            // Скрываем карточку с анимацией
-            card.style.opacity = "0";
-            card.style.transform = "translateY(20px) scale(0.95)";
+            // Скрываем карточку с анимацией (через ссылку)
+            cardLink.style.opacity = "0"; // Изменено: card -> cardLink
+            cardLink.style.transform = "translateY(20px) scale(0.95)"; // Изменено: card -> cardLink
 
             // После завершения анимации скрываем элемент
             setTimeout(function () {
@@ -260,11 +278,19 @@
                 ?.getAttribute("data-filter")
                 ?.trim()
                 .toLowerCase();
+              // ❌ Старый код: const stillHidden = currentFilter !== "all" && !cardCategories.includes(currentFilter);
+              // ✅ Новый код: снова получаем атрибут с cardLink
+              const categoryAttrForCheck =
+                cardLink.getAttribute("data-category") || "";
+              const cardCategoriesForCheck = categoryAttrForCheck
+                .toLowerCase()
+                .split(/\s+/)
+                .filter(Boolean);
               const stillHidden =
                 currentFilter !== "all" &&
-                !cardCategories.includes(currentFilter);
+                !cardCategoriesForCheck.includes(currentFilter);
               if (stillHidden) {
-                card.style.display = "none";
+                cardLink.style.display = "none"; // Изменено: card -> cardLink
               }
             }, 300); // 300ms — должно совпадать с duration в CSS transition
           }
@@ -272,80 +298,4 @@
       });
     });
   });
-
-  // --- МОДАЛЬНОЕ ОКНО КЕЙСОВ ---
-  var modal = document.getElementById("caseModal");
-  var openBtns = document.querySelectorAll(".open-case-btn");
-  var closeBtn = document.querySelector(".modal-close");
-
-  if (modal) {
-    function openModal() {
-      var scrollBarWidth =
-        window.innerWidth - document.documentElement.offsetWidth;
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = scrollBarWidth + "px";
-    }
-
-    function closeModal() {
-      modal.classList.remove("open");
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }
-
-    if (openBtns.length) {
-      openBtns.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          var card = btn.closest(".project-card");
-
-          var modalTitle = document.getElementById("modalTitle");
-          var modalDesc = document.getElementById("modalDesc");
-          if (modalTitle) modalTitle.textContent = card.dataset.title;
-          if (modalDesc) modalDesc.textContent = card.dataset.desc;
-
-          // Ссылка на полную запись
-          var readMoreLink = document.getElementById("modalReadMore");
-          if (readMoreLink) readMoreLink.href = card.dataset.permalink || "#";
-
-          // Сроки, стек (из тегов), результат
-          var modalDuration = document.getElementById("modalMetaDuration");
-          var modalMetaTech = document.getElementById("modalMetaTech");
-          var modalMetaResult = document.getElementById("modalMetaResult");
-          if (modalDuration)
-            modalDuration.textContent = card.dataset.duration || "—";
-          if (modalMetaTech)
-            modalMetaTech.textContent = card.dataset.tags || "—";
-          if (modalMetaResult)
-            modalMetaResult.textContent = card.dataset.result || "—";
-
-          // Получаем src изображения из карточки
-          var cardImg = card.querySelector(".project-img img");
-          var modalImageEl = document.getElementById("modalImage");
-          if (cardImg && modalImageEl) {
-            modalImageEl.innerHTML =
-              '<img src="' +
-              cardImg.src +
-              '" alt="' +
-              cardImg.alt +
-              '" style="width:100%;height:100%;object-fit:cover;border-radius:20px 20px 0 0">';
-          } else if (modalImageEl) {
-            modalImageEl.style.background = card.dataset.bg;
-          }
-
-          openModal();
-        });
-      });
-    }
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
-    }
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
-    });
-  }
 })();
