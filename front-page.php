@@ -937,45 +937,52 @@ get_header();
 			<p>Экспертные материалы о веб-разработке</p>
 		</div>
 		<div class="blog-grid">
-			<div class="article-card animate">
-				<div class="article-img">
-					<img
-						src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-						alt="Как выбрать подрядчика для разработки сайта"
-						style="width: 100%; height: 100%; object-fit: cover">
-				</div>
-				<div class="article-content">
-					<span class="article-tag">Советы</span>
-					<h4>Как выбрать подрядчика для разработки сайта?</h4>
-					<a href="#" class="article-link">Читать далее →</a>
-				</div>
-			</div>
-			<div class="article-card animate">
-				<div class="article-img">
-					<img
-						src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
-						alt="Почему важна техподдержка после запуска"
-						style="width: 100%; height: 100%; object-fit: cover">
-				</div>
-				<div class="article-content">
-					<span class="article-tag">Технологии</span>
-					<h4>Почему важна техподдержка после запуска?</h4>
-					<a href="#" class="article-link">Читать далее →</a>
-				</div>
-			</div>
-			<div class="article-card animate">
-				<div class="article-img">
-					<img
-						src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
-						alt="Тренды веб-дизайна 2026 года"
-						style="width: 100%; height: 100%; object-fit: cover">
-				</div>
-				<div class="article-content">
-					<span class="article-tag">Тренды</span>
-					<h4>Тренды веб-дизайна 2026 года</h4>
-					<a href="#" class="article-link">Читать далее →</a>
-				</div>
-			</div>
+			<?php
+			// Запрос последних 3 статей из категории 'blog' (или любая другая логика получения записей)
+			$args = array(
+				'post_type' => 'post', // или ваш custom post type, например, 'blog'
+				'posts_per_page' => 3,
+				'post_status' => 'publish',
+				// 'category_name' => 'blog' // Раскомментируйте, если используете категорию
+			);
+
+			$blog_query = new WP_Query($args);
+
+			if ($blog_query->have_posts()) :
+				while ($blog_query->have_posts()) : $blog_query->the_post();
+					$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium'); // Используйте 'full', если нужна большая картинка
+					if (!$thumbnail_url) {
+						// Если миниатюра не установлена, используйте заглушку
+						$thumbnail_url = 'https://via.placeholder.com/800x400?text=No+Image'; // Замените на вашу заглушку
+					}
+					$permalink = get_permalink();
+					$title = get_the_title();
+					$excerpt = get_the_excerpt() ?: wp_trim_words(get_the_content(), 20, '...'); // Получаем excerpt или обрезанный content
+					// Пример получения тега/рубрики - можно адаптировать под свои таксономии (например, category или custom taxonomy)
+					$categories = get_the_category();
+					$tag_name = !empty($categories) ? esc_html($categories[0]->name) : 'Статья'; // Берём первую рубрику или используем заглушку
+			?>
+					<div class="article-card animate">
+						<div class="article-img">
+							<img
+								src="<?php echo esc_url($thumbnail_url); ?>"
+								alt="<?php echo esc_attr($title); ?>"
+								style="width: 100%; height: 100%; object-fit: cover">
+						</div>
+						<div class="article-content">
+							<span class="article-tag"><?php echo $tag_name; ?></span>
+							<h4><?php echo $title; ?></h4>
+							<a href="<?php echo $permalink; ?>" class="article-link">Читать далее →</a>
+						</div>
+					</div>
+			<?php
+				endwhile;
+				wp_reset_postdata(); // Важно сбросить глобальную переменную поста после своего запроса
+			else :
+				// Опционально: Вывести сообщение, если статьи не найдены
+				echo '<p>Статей пока нет.</p>';
+			endif;
+			?>
 		</div>
 	</div>
 </section>
