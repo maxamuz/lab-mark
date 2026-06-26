@@ -175,7 +175,7 @@
   .admin-bar header {
     top: 0;
   }
-  .admin-bar #hero-bg {
+  #hero-bg {
     left: 0;
   }
   .logo {
@@ -201,5 +201,9 @@
   }
   .about-text {
     order: 1;
+  }
+  .floating-contact-widget {
+    bottom: 145px;
+    right: 10px;
   }
 }

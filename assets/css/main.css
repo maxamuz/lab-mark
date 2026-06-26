@@ -342,7 +342,12 @@ footer .logo span {
   background: none;
   border: none;
 }
-
+.top-contacts {
+  display: flex;
+}
+.contacts-phone:hover {
+  color: var(--accent);
+}
 /* --- 1. Hero --- */
 .hero {
   padding: 200px 0 120px;
@@ -2349,4 +2354,57 @@ main#primary {
 .ith-landing .faq__item p {
   padding-bottom: 20px;
   color: var(--muted);
+}
+
+/* Плавающий виджет быстрой связи */
+.floating-contact-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Расстояние между кнопками */
+  z-index: 1000; /* Убедитесь, что виджет поверх других элементов */
+  font-family: Arial, sans-serif; /* Пример шрифта */
+}
+
+.contact-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Форма круга */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* Плавный переход для hover */
+  padding: 0; /* Убираем внутренние отступы, если они влияют */
+}
+
+.contact-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Изображение масштабируется, сохраняя пропорции */
+  border-radius: 50%; /* Форма круга для изображения */
+  pointer-events: none; /* Отключаем события мыши для изображения внутри ссылки */
+}
+
+/* Стили для кнопки Telegram */
+.telegram-btn {
+  background-color: #229ed9; /* Цвет фона для Telegram */
+  /* border: 1px solid #ccc; /* Опциональная граница */
+}
+
+/* Стили для кнопки WhatsApp (Max) */
+.whatsapp-btn {
+  background-color: #25d366; /* Цвет фона для WhatsApp */
+  /* border: 1px solid #ccc; /* Опциональная граница */
+}
+
+/* Эффект при наведении */
+.contact-button:hover {
+  transform: scale(1.1); /* Увеличение при наведении */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Более заметная тень при наведении */
 }

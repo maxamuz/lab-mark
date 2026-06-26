@@ -123,6 +123,16 @@
 
 <?php wp_footer(); ?>
 
+<!-- Плавающий виджет быстрой связи -->
+<div class="floating-contact-widget">
+	<a href="https://t.me/maxamuz" target="_blank" class="contact-button telegram-btn" title="Мессенджер Telegram">
+		<img src="<?php echo get_template_directory_uri() . '/assets/images/tg.png' ?>" alt="Иконка мессендера Telegram">
+	</a>
+	<a href="https://max.ru/u/f9LHodD0cOJ2iTwoih8QMo-j37OSTFs9PXPk1VTXTsdH1hPP1fOmFCEppTI" target="_blank" class="contact-button whatsapp-btn" title="Мессенджер Макс">
+		<img src="<?php echo get_template_directory_uri() . '/assets/images/max2.png' ?>" class="widget-max-img" alt="Иконка мессендера NAX">
+	</a>
+</div>
+
 </body>
 
 </html>
