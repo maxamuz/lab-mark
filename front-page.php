@@ -385,9 +385,9 @@ get_header();
 					<div class="pricing-feature included">
 						<span class="feature-check yes">✓</span><span>Индивидуальная разработка</span>
 					</div>
-					<div class="pricing-feature included">
+					<!-- <div class="pricing-feature included">
 						<span class="feature-check yes">✓</span><span>Сложные интеграции API</span>
-					</div>
+					</div> -->
 					<div class="pricing-feature included">
 						<span class="feature-check yes">✓</span><span>Высокая нагрузка</span>
 					</div>
