@@ -614,6 +614,7 @@ footer .logo span {
 }
 .service-list li span {
   font-weight: 500;
+  height: 32px;
 }
 .arrow-icon {
   font-weight: bold;
@@ -2428,4 +2429,8 @@ main#primary {
 .contact-button:hover {
   transform: scale(1.1); /* Увеличение при наведении */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Более заметная тень при наведении */
+}
+
+.phone-footer {
+  display: none;
 }

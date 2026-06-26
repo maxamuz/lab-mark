@@ -169,6 +169,16 @@
   .container {
     max-width: 380px;
   }
+  .top-contacts {
+    flex-direction: column;
+  }
+  .contacts-phone {
+    display: none;
+  }
+  .phone-footer {
+    display: block;
+  }
+
   .hero {
     padding: 100px 0 50px;
   }

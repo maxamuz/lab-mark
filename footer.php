@@ -125,6 +125,9 @@
 
 <!-- Плавающий виджет быстрой связи -->
 <div class="floating-contact-widget">
+	<a href="tel:+79613738945" target="_blank" class="phone-footer contact-button telegram-btn" title="Мессенджер Telegram">
+		<img src="<?php echo get_template_directory_uri() . '/assets/images/phone-circles.png' ?>" alt="Иконка мессендера Telegram">
+	</a>
 	<a href="https://t.me/maxamuz" target="_blank" class="contact-button telegram-btn" title="Мессенджер Telegram">
 		<img src="<?php echo get_template_directory_uri() . '/assets/images/tg.png' ?>" alt="Иконка мессендера Telegram">
 	</a>
