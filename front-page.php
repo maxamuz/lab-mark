@@ -553,8 +553,8 @@ get_header();
 			</p>
 		<?php endif; ?>
 		<!-- Добавляем атрибут data-total для JavaScript -->
-		<a href="#" class="button-open" style="display: block;" data-total="<?php echo esc_attr($projects_query->post_count); ?>">Раскрыть все проекты</a>
-		<a href="#" class="button-close" style="display:none;">Свернуть проекты</a>
+		<a href="#" class="button-open" style="display: none;" data-total="<?php echo esc_attr($projects_query->post_count); ?>">Раскрыть все проекты</a>
+		<a href="#" class="button-close" style="display: none;">Свернуть проекты</a>
 	</div>
 </section>
 

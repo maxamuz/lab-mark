@@ -346,30 +346,127 @@
   document.addEventListener("DOMContentLoaded", function () {
     const openButton = document.querySelector(".button-open");
     const closeButton = document.querySelector(".button-close");
-    const portfolioSection = document.getElementById("portfolio"); // Находим секцию портфолио
-    const hiddenCards = document.querySelectorAll(
-      ".project-card-link.hidden-card",
-    );
+    const portfolioSection = document.getElementById("portfolio");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const portfolioGrid = document.getElementById("portfolioGrid"); // Для доступа к карточкам
 
-    if (hiddenCards.length === 0) {
-      if (openButton) {
+    let currentFilter = "all"; // Текущий активный фильтр
+
+    // --- Логика для кнопок Раскрыть/Свернуть ---
+    function updateExpandCollapseButtons() {
+      // Показываем/скрываем кнопки в зависимости от текущего фильтра и наличия скрытых карточек
+      if (currentFilter === "all") {
+        const allCards = Array.from(
+          portfolioGrid.querySelectorAll(".project-card-link"),
+        ); // Используем portfolioGrid
+        const visibleCards = allCards.filter(
+          (card) =>
+            !card.classList.contains("filtered-out") &&
+            card.style.display !== "none",
+        ); // Учитываем и CSS display
+        const totalCards = allCards.length;
+
+        if (totalCards > 9) {
+          // Показываем кнопки, если в "всех" больше 9 карточек
+          openButton.style.display = "block"; // Показываем "Раскрыть", если нужно
+          // Состояние "Свернуть" зависит от того, скрыты ли карточки
+          if (visibleCards.length > 9) {
+            openButton.style.display = "none";
+            closeButton.style.display = "block";
+          } else {
+            openButton.style.display = "block";
+            closeButton.style.display = "none";
+          }
+        } else {
+          openButton.style.display = "none"; // Не показываем, если и так меньше 10
+          closeButton.style.display = "none";
+        }
+      } else {
+        // Скрываем обе кнопки, если фильтр не "all"
         openButton.style.display = "none";
+        closeButton.style.display = "none";
       }
-      return;
     }
 
+    // --- Функция для обновления видимости карточек при фильтрации ---
+    function applyFilter(filterValue) {
+      const cards = portfolioGrid.querySelectorAll(".project-card-link"); // Используем portfolioGrid
+
+      cards.forEach((card) => {
+        const categories = card.getAttribute("data-category");
+        // Скрываем карточку, если она не соответствует фильтру
+        if (filterValue === "all" || categories.includes(filterValue)) {
+          card.classList.remove("filtered-out"); // Убираем класс фильтрации
+          card.style.display = ""; // Сбрасываем inline стиль display
+        } else {
+          card.classList.add("filtered-out"); // Добавляем класс фильтрации
+          card.style.display = "none"; // Прячем через display
+        }
+      });
+
+      // Обновляем состояние кнопок после применения фильтра
+      updateExpandCollapseButtons();
+    }
+
+    // --- Обработчики кликов по кнопкам фильтра ---
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const filterValue = this.getAttribute("data-filter");
+
+        // Обновляем UI кнопок фильтра
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        // Сохраняем текущий фильтр
+        currentFilter = filterValue;
+
+        // Применяем фильтр
+        applyFilter(filterValue);
+
+        // Сбрасываем видимость карточек к начальному состоянию (первые 9) при возврате к "всем"
+        if (filterValue === "all") {
+          resetCardVisibility(); // Вызываем новую функцию
+        }
+      });
+    });
+
+    // --- Функция для сброса видимости карточек к начальному состоянию ---
+    function resetCardVisibility() {
+      const allCards = Array.from(
+        portfolioGrid.querySelectorAll(".project-card-link:not(.filtered-out)"),
+      ); // Берём только неотфильтрованные
+
+      allCards.forEach((card, index) => {
+        if (index < 9) {
+          card.style.display = ""; // Показываем первые 9
+        } else {
+          card.style.display = "none"; // Скрываем остальные
+        }
+      });
+
+      // Обновляем состояние кнопок после сброса
+      updateExpandCollapseButtons();
+    }
+
+    // --- Обработчики кликов по кнопкам Раскрыть/Свернуть ---
     if (openButton) {
       openButton.addEventListener("click", function (e) {
         e.preventDefault();
 
-        hiddenCards.forEach((card) => {
-          card.classList.remove("hidden-card");
+        const allCards = Array.from(
+          portfolioGrid.querySelectorAll(
+            ".project-card-link:not(.filtered-out)",
+          ),
+        ); // Только неотфильтрованные
+
+        allCards.forEach((card, index) => {
+          card.style.display = ""; // Показываем все неотфильтрованные карточки
         });
 
-        openButton.style.display = "none";
-        if (closeButton) {
-          closeButton.style.display = "block";
-        }
+        // Обновляем состояние кнопок
+        updateExpandCollapseButtons();
       });
     }
 
@@ -377,31 +474,42 @@
       closeButton.addEventListener("click", function (e) {
         e.preventDefault();
 
+        // Скрываем все карточки, кроме первых 9 (для "все")
         const allCards = Array.from(
-          document.querySelectorAll(".project-card-link"),
-        );
-        const cardsToHide = allCards.slice(9);
+          portfolioGrid.querySelectorAll(
+            ".project-card-link:not(.filtered-out)",
+          ),
+        ); // Только неотфильтрованные
 
-        cardsToHide.forEach((card) => {
-          card.classList.add("hidden-card");
+        allCards.forEach((card, index) => {
+          if (index < 9) {
+            card.style.display = ""; // Показываем первые 9
+          } else {
+            card.style.display = "none"; // Скрываем остальные
+          }
         });
 
-        closeButton.style.display = "none";
-        if (openButton) {
-          openButton.style.display = "block";
-        }
+        // Обновляем состояние кнопок
+        updateExpandCollapseButtons();
 
         // Прокрутка к началу блока портфолио
         if (portfolioSection) {
-          // Опционально: плавная прокрутка
-          // portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-          // Жёсткая прокрутка
           portfolioSection.scrollIntoView({ block: "start" });
-
-          // Альтернатива: window.scrollTo(0, portfolioSection.offsetTop);
         }
       });
     }
+
+    // --- Инициализация ---
+    // Применяем начальный фильтр "all", если он активен
+    const initialActiveFilterBtn = document.querySelector(".filter-btn.active");
+    if (initialActiveFilterBtn) {
+      currentFilter = initialActiveFilterBtn.getAttribute("data-filter");
+      applyFilter(currentFilter);
+      if (currentFilter === "all") {
+        resetCardVisibility(); // Применяем начальное состояние карточек для "все"
+      }
+    }
+    // Обновляем состояние кнопок при загрузке
+    updateExpandCollapseButtons();
   });
 })();
