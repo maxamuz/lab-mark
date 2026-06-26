@@ -498,7 +498,7 @@ get_header();
 					}
 
 					// Определяем класс для скрытия карточки
-					$additional_class = ($card_counter > 6) ? ' hidden-card' : '';
+					$additional_class = ($card_counter > 9) ? ' hidden-card' : '';
 
 				?>
 					<!-- Оборачиваем всю карточку в ссылку -->
