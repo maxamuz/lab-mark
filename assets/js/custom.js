@@ -370,7 +370,7 @@
           // Показываем кнопки, если в "всех" больше 9 карточек
           openButton.style.display = "block"; // Показываем "Раскрыть", если нужно
           // Состояние "Свернуть" зависит от того, скрыты ли карточки
-          if (visibleCards.length > 6) {
+          if (visibleCards.length > 9) {
             openButton.style.display = "none";
             closeButton.style.display = "block";
           } else {
