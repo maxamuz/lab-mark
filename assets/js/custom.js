@@ -380,7 +380,7 @@
         const allCards = Array.from(
           document.querySelectorAll(".project-card-link"),
         );
-        const cardsToHide = allCards.slice(6);
+        const cardsToHide = allCards.slice(9);
 
         cardsToHide.forEach((card) => {
           card.classList.add("hidden-card");
