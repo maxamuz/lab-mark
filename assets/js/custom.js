@@ -340,4 +340,68 @@
       });
     });
   });
+
+  // Карточки проектов
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const openButton = document.querySelector(".button-open");
+    const closeButton = document.querySelector(".button-close");
+    const portfolioSection = document.getElementById("portfolio"); // Находим секцию портфолио
+    const hiddenCards = document.querySelectorAll(
+      ".project-card-link.hidden-card",
+    );
+
+    if (hiddenCards.length === 0) {
+      if (openButton) {
+        openButton.style.display = "none";
+      }
+      return;
+    }
+
+    if (openButton) {
+      openButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        hiddenCards.forEach((card) => {
+          card.classList.remove("hidden-card");
+        });
+
+        openButton.style.display = "none";
+        if (closeButton) {
+          closeButton.style.display = "block";
+        }
+      });
+    }
+
+    if (closeButton) {
+      closeButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const allCards = Array.from(
+          document.querySelectorAll(".project-card-link"),
+        );
+        const cardsToHide = allCards.slice(6);
+
+        cardsToHide.forEach((card) => {
+          card.classList.add("hidden-card");
+        });
+
+        closeButton.style.display = "none";
+        if (openButton) {
+          openButton.style.display = "block";
+        }
+
+        // Прокрутка к началу блока портфолио
+        if (portfolioSection) {
+          // Опционально: плавная прокрутка
+          // portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // Жёсткая прокрутка
+          portfolioSection.scrollIntoView({ block: "start" });
+
+          // Альтернатива: window.scrollTo(0, portfolioSection.offsetTop);
+        }
+      });
+    }
+  });
 })();

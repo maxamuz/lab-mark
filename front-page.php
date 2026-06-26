@@ -389,7 +389,7 @@ get_header();
 						<span class="feature-check yes">✓</span><span>Сложные интеграции API</span>
 					</div> -->
 					<div class="pricing-feature included">
-						<span class="feature-check yes">✓</span><span>Высокая нагрузка</span>
+						<span class="feature-check yes">✓</span><span>Сложный функционал</span>
 					</div>
 					<div class="pricing-feature included">
 						<span class="feature-check yes">✓</span><span>Срок: от 8 недель</span>
@@ -453,17 +453,22 @@ get_header();
 		// Запрос проектов.
 		$projects_query = new WP_Query(array(
 			'post_type'      => 'project',
-			'posts_per_page' => -1,
+			'posts_per_page' => -1, // Получаем все для фильтрации, но будем показывать только первые 6
 			'orderby'        => 'meta_value_num',
 			'meta_key'       => '_labmark_sort_order',
 			'order'          => 'ASC',
 		));
+
+		// Счётчик для карточек
+		$card_counter = 0;
 		?>
 
 		<?php if ($projects_query->have_posts()) : ?>
 			<!-- Сетка проектов -->
 			<div class="portfolio-grid" id="portfolioGrid">
 				<?php while ($projects_query->have_posts()) : $projects_query->the_post();
+					$card_counter++; // Увеличиваем счётчик перед каждой карточкой
+
 					// Получаем данные мета-полей.
 					$case_description = get_post_meta(get_the_ID(), '_labmark_case_description', true);
 					$project_duration = get_post_meta(get_the_ID(), '_labmark_project_duration', true);
@@ -491,9 +496,13 @@ get_header();
 					} elseif ($preview_url) {
 						$img_src = esc_url($preview_url);
 					}
+
+					// Определяем класс для скрытия карточки
+					$additional_class = ($card_counter > 6) ? ' hidden-card' : '';
+
 				?>
 					<!-- Оборачиваем всю карточку в ссылку -->
-					<a href="<?php echo esc_url(get_permalink()); ?>" class="project-card-link"
+					<a href="<?php echo esc_url(get_permalink()); ?>" class="project-card-link<?php echo esc_attr($additional_class); ?>"
 						data-category="<?php echo esc_attr($category_slugs); ?>"
 						data-title="<?php echo esc_attr(get_the_title()); ?>"
 						data-desc="<?php echo esc_attr($case_description ? $case_description : get_the_excerpt()); ?>"
@@ -543,6 +552,9 @@ get_header();
 				<?php esc_html_e('Проекты ещё не добавлены. Загляните позже!', 'lab-mark'); ?>
 			</p>
 		<?php endif; ?>
+		<!-- Добавляем атрибут data-total для JavaScript -->
+		<a href="#" class="button-open" style="display: block;" data-total="<?php echo esc_attr($projects_query->post_count); ?>">Раскрыть все проекты</a>
+		<a href="#" class="button-close" style="display:none;">Свернуть проекты</a>
 	</div>
 </section>
 
