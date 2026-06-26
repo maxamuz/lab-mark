@@ -366,11 +366,11 @@
         ); // Учитываем и CSS display
         const totalCards = allCards.length;
 
-        if (totalCards > 9) {
+        if (totalCards > 6) {
           // Показываем кнопки, если в "всех" больше 9 карточек
           openButton.style.display = "block"; // Показываем "Раскрыть", если нужно
           // Состояние "Свернуть" зависит от того, скрыты ли карточки
-          if (visibleCards.length > 9) {
+          if (visibleCards.length > 6) {
             openButton.style.display = "none";
             closeButton.style.display = "block";
           } else {
@@ -439,7 +439,7 @@
       ); // Берём только неотфильтрованные
 
       allCards.forEach((card, index) => {
-        if (index < 9) {
+        if (index < 6) {
           card.style.display = ""; // Показываем первые 9
         } else {
           card.style.display = "none"; // Скрываем остальные
@@ -482,7 +482,7 @@
         ); // Только неотфильтрованные
 
         allCards.forEach((card, index) => {
-          if (index < 9) {
+          if (index < 6) {
             card.style.display = ""; // Показываем первые 9
           } else {
             card.style.display = "none"; // Скрываем остальные
