@@ -2545,3 +2545,147 @@ main#primary {
   text-align: center;
   max-width: 420px;
 }
+
+/* Подзаголовок секции (общий, можно переиспользовать) */
+.ith-landing .section__subtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 620px;
+  margin: 0 auto 44px;
+}
+
+/* Тарифы */
+.ith-landing .pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.ith-landing .plan {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.ith-landing .plan:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.ith-landing .plan--featured {
+  border-color: var(--primary);
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.1),
+    var(--surface) 60%
+  );
+  box-shadow: 0 20px 50px rgba(59, 130, 246, 0.18);
+}
+.ith-landing .plan--featured:hover {
+  transform: translateY(-6px);
+}
+
+.ith-landing .plan__tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--primary-2), var(--primary));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+}
+
+.ith-landing .plan__name {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.ith-landing .plan__desc {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+  min-height: 38px;
+}
+.ith-landing .plan__price {
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--primary-2), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ith-landing .plan__term {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 6px 0 22px;
+}
+
+.ith-landing .plan__list {
+  list-style: none;
+  display: grid;
+  gap: 13px;
+  margin: 0 0 26px;
+  flex: 1;
+}
+.ith-landing .plan__list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--text);
+  font-size: 15px;
+}
+.ith-landing .plan__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 18px;
+  height: 18px;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ith-landing .pricing__note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 34px;
+}
+.ith-landing .pricing__note a {
+  color: var(--primary-2);
+  font-weight: 600;
+}
+.ith-landing .pricing__note a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптив тарифов */
+@media (max-width: 900px) {
+  .ith-landing .pricing {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .ith-landing .plan--featured {
+    order: -1;
+  }
+}
