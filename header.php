@@ -87,11 +87,19 @@
 		<div class="container">
 			<div class="nav-wrapper">
 				<div class="logo">
-					<a href="<?php echo esc_url(home_url('/')); ?>">
-						Лаборатория<span>Маркетинга</span>
+					<!-- Выводим логотип из настроек темы или стандартный, если не установлен -->
+					<?php
+					if (function_exists('the_custom_logo') && has_custom_logo()) {
+						the_custom_logo(); // Используем стандартную функцию WordPress для вывода кастомного логотипа
+					} else {
+						// Если кастомный логотип не установлен, можно вывести текстовое название
+						bloginfo('name');
+					}
+					?>
+					<!-- Альтернативно, если всегда нужен текстовый логотип, даже если изображение загружено -->
+					<!-- bloginfo('name'); -->
 					</a>
 				</div>
-
 				<?php
 				wp_nav_menu(
 					array(
