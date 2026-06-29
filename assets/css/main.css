@@ -2561,6 +2561,7 @@ main#primary {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   align-items: start;
+  border-radius: var(--radius);
 }
 .ith-landing .plan {
   position: relative;
