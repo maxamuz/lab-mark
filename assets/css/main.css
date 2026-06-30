@@ -1945,7 +1945,7 @@ main#primary {
   width: 100%;
 }
 .ith-landing .btn--ghost {
-  background: transparent;
+  /* background: transparent; */
   border: 1px solid var(--border);
   color: var(--text);
   box-shadow: none;
