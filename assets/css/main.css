@@ -2703,6 +2703,7 @@ main#primary {
 .ith-landing .testimonials .section-header {
   text-align: center;
   margin-bottom: 48px;
+  max-width: 100%;
 }
 .ith-landing .testimonials .section-header h2 {
   font-size: 34px;
