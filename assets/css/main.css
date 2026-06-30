@@ -2690,3 +2690,147 @@ main#primary {
     order: -1;
   }
 }
+
+/* Секция отзывов */
+.ith-landing .testimonials {
+  background: var(--bg-2);
+}
+.ith-landing .section-padding {
+  padding: 84px 0;
+}
+
+/* Заголовок секции */
+.ith-landing .testimonials .section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.ith-landing .testimonials .section-header h2 {
+  font-size: 34px;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.ith-landing .testimonials .section-header p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Сетка */
+.ith-landing .reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Карточка отзыва */
+.ith-landing .review-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.ith-landing .review-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Звёзды */
+.ith-landing .review-stars {
+  color: #fbbf24;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+/* Текст отзыва */
+.ith-landing .review-text {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+/* Автор */
+.ith-landing .review-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ith-landing .author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-2), var(--primary));
+}
+.ith-landing .author-info h5 {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+.ith-landing .author-info span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Анимация появления */
+.ith-landing .review-card.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: ith-fade-up 0.6s ease forwards;
+}
+.ith-landing .reviews-grid .review-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.ith-landing .reviews-grid .review-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.ith-landing .reviews-grid .review-card:nth-child(4) {
+  animation-delay: 0.36s;
+}
+.ith-landing .reviews-grid .review-card:nth-child(5) {
+  animation-delay: 0.48s;
+}
+.ith-landing .reviews-grid .review-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes ith-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .ith-landing .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .ith-landing .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  .ith-landing .section-padding {
+    padding: 56px 0;
+  }
+  .ith-landing .testimonials .section-header h2 {
+    font-size: 26px;
+  }
+}
