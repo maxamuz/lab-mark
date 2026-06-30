@@ -13,7 +13,7 @@
 		<div class="footer-grid">
 			<div class="footer-col">
 				<div class="logo" style="margin-bottom: 20px">
-					Лаборатория<span>Маркетинга</span>
+					Успех<span>+</span>
 				</div>
 				<p style="line-height: 1.8; max-width: 300px">
 					Создаём надёжные веб-решения для бизнеса любого масштаба.
@@ -48,7 +48,7 @@
 			</div>
 			<div class="footer-col">
 				<h4>Контакты</h4>
-				<div class="contact-line">
+				<!-- <div class="contact-line">
 					<div class="contact-icon">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -56,14 +56,14 @@
 						</svg>
 					</div>
 					<span>Москва, ул. Примерная, 10, оф. 505</span>
-				</div>
+				</div> -->
 				<div class="contact-line">
 					<div class="contact-icon">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
 						</svg>
 					</div>
-					<a href="tel:+79990000000">+7 (999) 000-00-00</a>
+					<a href="tel:+79613738945">+7 (961) 373-89-45</a>
 				</div>
 				<div class="contact-line">
 					<div class="contact-icon">
@@ -72,15 +72,15 @@
 							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
 						</svg>
 					</div>
-					<a href="mailto:hello@webstudio.ru">hello@webstudio.ru</a>
+					<a href="mailto:maxamuz@yandex.ru">maxamuz@yandex.ru</a>
 				</div>
-				<div class="map-placeholder" style="margin-top: 15px; padding: 0; overflow: hidden; border: none;">
+				<!-- <div class="map-placeholder" style="margin-top: 15px; padding: 0; overflow: hidden; border: none;">
 					<img
 						src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80"
 						alt="Карта — наш офис"
 						loading="lazy"
 						style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="copyright">
