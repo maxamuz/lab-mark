@@ -2876,7 +2876,6 @@ main#primary {
 
 /* Вторичная (ghost) кнопка */
 .ith-landing .btn--ghost {
-  background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
   box-shadow: none;
