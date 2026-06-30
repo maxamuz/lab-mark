@@ -2835,3 +2835,67 @@ main#primary {
     font-size: 26px;
   }
 }
+
+/* Блок с одиночной кнопкой — центрирование */
+.ith-landing > a.btn {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 32px auto;
+  text-align: center;
+}
+
+/* Базовая кнопка (если ещё не определена выше) */
+.ith-landing .btn {
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 14px 32px;
+  font-size: 16px;
+  transition: 0.25s;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+}
+.ith-landing .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+}
+
+/* Модификаторы размера */
+.ith-landing .btn--large {
+  padding: 16px 40px;
+  font-size: 17px;
+}
+.ith-landing .btn--small {
+  padding: 10px 22px;
+  font-size: 14px;
+}
+
+/* Вторичная (ghost) кнопка */
+.ith-landing .btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: none;
+}
+.ith-landing .btn--ghost:hover {
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: none;
+}
+
+/* Прозрачная с акцентным текстом (доп. вариант) */
+.ith-landing .btn--outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary-2);
+  box-shadow: none;
+}
+.ith-landing .btn--outline:hover {
+  background: rgba(59, 130, 246, 0.12);
+  color: #fff;
+  box-shadow: none;
+}
