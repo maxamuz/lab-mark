@@ -512,4 +512,54 @@
     // Обновляем состояние кнопок при загрузке
     updateExpandCollapseButtons();
   });
+  // Перевод текста ошибок маски телефона
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Функция для замены текста в атрибутах data-msg-*
+    function updateMaskMessages() {
+      const phoneInputs = document.querySelectorAll("input[data-mask]");
+
+      phoneInputs.forEach(function (input) {
+        if (input.hasAttribute("data-msg-incomplete")) {
+          input.setAttribute(
+            "data-msg-incomplete",
+            "Пожалуйста, введите полный номер телефона.",
+          );
+        }
+        if (input.hasAttribute("data-msg-complete")) {
+          input.setAttribute(
+            "data-msg-complete",
+            "Номер телефона введен! Пожалуйста, проверьте его правильность перед отправкой.",
+          );
+        }
+      });
+    }
+
+    // Функция для замены текста в подсказках об ошибках CF7
+    function translateCf7Errors() {
+      document
+        .querySelectorAll(".wpcf7-not-valid-tip")
+        .forEach(function (span) {
+          if (span.textContent.trim() === "Please complete the phone number.") {
+            span.textContent = "Пожалуйста, укажите номер телефона полностью.";
+          }
+        });
+    }
+
+    // Вызываем обе функции при загрузке DOM
+    updateMaskMessages();
+    translateCf7Errors();
+
+    // Обновляем data-msg-* при отправке формы (если плагин сбрасывает значения обратно)
+    document.addEventListener("wpcf7submit", function (event) {
+      updateMaskMessages();
+    });
+
+    // Следим за динамическим появлением сообщений об ошибках CF7
+    const observer = new MutationObserver(translateCf7Errors);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
 })();

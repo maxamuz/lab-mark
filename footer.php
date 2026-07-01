@@ -136,51 +136,7 @@
 	</a>
 </div>
 
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		// Функция для замены текста в атрибутах data-msg-*
-		function updateMaskMessages() {
-			const phoneInputs = document.querySelectorAll('input[data-mask]'); // Ищем все input с маской
 
-			phoneInputs.forEach(function(input) {
-				// Проверяем наличие атрибута и меняем значение
-				if (input.hasAttribute('data-msg-incomplete')) {
-					input.setAttribute('data-msg-incomplete', 'Пожалуйста, введите полный номер телефона.');
-				}
-				if (input.hasAttribute('data-msg-complete')) {
-					input.setAttribute('data-msg-complete', 'Номер телефона введен! Пожалуйста, проверьте его правильность перед отправкой.');
-				}
-			});
-		}
-
-		// Вызываем функцию при загрузке DOM
-		updateMaskMessages();
-
-		// Также вызываем при отправке формы (если плагин сбрасывает значения обратно)
-		document.addEventListener('wpcf7submit', function(event) {
-			updateMaskMessages(); // Обновляем снова, если нужно
-		});
-
-	});
-</script>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		function translateCf7Errors() {
-			document.querySelectorAll('.wpcf7-not-valid-tip').forEach(function(span) {
-				if (span.textContent.trim() === 'Please complete the phone number.') {
-					span.textContent = 'Пожалуйста, укажите номер телефона полностью.';
-				}
-			});
-		}
-		translateCf7Errors();
-		const observer = new MutationObserver(translateCf7Errors);
-		observer.observe(document.body, {
-			childList: true,
-			subtree: true
-		});
-	});
-</script>
 
 
 </body>
