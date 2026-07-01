@@ -519,17 +519,15 @@
     if (!phoneInput) return;
 
     function formatPhone(value) {
-      // Оставляем только цифры
       let digits = value.replace(/\D/g, "");
 
-      // Приводим к формату, начинающемуся с 7
       if (digits.startsWith("8")) {
         digits = "7" + digits.slice(1);
       }
       if (!digits.startsWith("7")) {
         digits = "7" + digits;
       }
-      digits = digits.slice(0, 11); // максимум 11 цифр (7 + 10)
+      digits = digits.slice(0, 11);
 
       let result = "+7";
       if (digits.length > 1) result += " (" + digits.slice(1, 4);
@@ -540,8 +538,94 @@
       return result;
     }
 
+    // Обрабатываем Backspace/Delete отдельно, чтобы правильно "перепрыгивать" разделители
+    phoneInput.addEventListener("keydown", function (e) {
+      if (e.key !== "Backspace" && e.key !== "Delete") return;
+
+      const cursorPos = this.selectionStart;
+      const selectionEnd = this.selectionEnd;
+
+      // Если есть выделение текста — стандартное поведение подходит
+      if (cursorPos !== selectionEnd) return;
+
+      const value = this.value;
+
+      if (e.key === "Backspace" && cursorPos > 0) {
+        let deletePos = cursorPos - 1;
+
+        // Если символ перед курсором — не цифра, ищем ближайшую цифру левее
+        while (deletePos >= 0 && !/\d/.test(value[deletePos])) {
+          deletePos--;
+        }
+
+        if (deletePos >= 0) {
+          e.preventDefault();
+          const newValue =
+            value.slice(0, deletePos) + value.slice(deletePos + 1);
+          const formatted = formatPhone(newValue);
+          this.value = formatted;
+
+          // Считаем новую позицию курсора: количество цифр до deletePos в исходной строке
+          const digitsBeforeDelete = value
+            .slice(0, deletePos)
+            .replace(/\D/g, "").length;
+          setCursorAfterNDigits(this, digitsBeforeDelete);
+        }
+      }
+
+      if (e.key === "Delete" && cursorPos < value.length) {
+        let deletePos = cursorPos;
+
+        while (deletePos < value.length && !/\d/.test(value[deletePos])) {
+          deletePos++;
+        }
+
+        if (deletePos < value.length) {
+          e.preventDefault();
+          const newValue =
+            value.slice(0, deletePos) + value.slice(deletePos + 1);
+          const formatted = formatPhone(newValue);
+          this.value = formatted;
+
+          const digitsBeforeDelete = value
+            .slice(0, deletePos)
+            .replace(/\D/g, "").length;
+          setCursorAfterNDigits(this, digitsBeforeDelete);
+        }
+      }
+    });
+
+    // Ставит курсор сразу после N-й цифры в отформатированной строке
+    function setCursorAfterNDigits(input, n) {
+      const value = input.value;
+      let count = 0;
+      let pos = value.length;
+
+      for (let i = 0; i < value.length; i++) {
+        if (/\d/.test(value[i])) {
+          count++;
+          if (count === n) {
+            pos = i + 1;
+            break;
+          }
+        }
+      }
+      if (n === 0) pos = 2; // сразу после "+7"
+
+      requestAnimationFrame(function () {
+        input.setSelectionRange(pos, pos);
+      });
+    }
+
     phoneInput.addEventListener("input", function () {
+      const cursorPos = this.selectionStart;
+      const digitsBeforeCursor = this.value
+        .slice(0, cursorPos)
+        .replace(/\D/g, "").length;
+
       this.value = formatPhone(this.value);
+
+      setCursorAfterNDigits(this, digitsBeforeCursor);
     });
 
     phoneInput.addEventListener("focus", function () {
