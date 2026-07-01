@@ -167,6 +167,33 @@ function lab_mark_scripts()
 }
 add_action('wp_enqueue_scripts', 'lab_mark_scripts');
 
+/**
+ * Блокировка неполного номера телефона.
+ */
+
+
+add_filter('wpcf7_validate_tel*', 'validate_ru_phone_265', 20, 2);
+add_filter('wpcf7_validate_tel', 'validate_ru_phone_265', 20, 2);
+
+function validate_ru_phone_265($result, $tag)
+{
+	$tag = new WPCF7_FormTag($tag);
+
+	if ($tag->name !== 'tel-265') {
+		return $result;
+	}
+
+	$value = isset($_POST['tel-265']) ? trim($_POST['tel-265']) : '';
+	$digits = preg_replace('/\D/', '', $value);
+
+	// Требуем ровно 11 цифр (7 + 10 цифр номера)
+	if (!preg_match('/^7\d{10}$/', $digits)) {
+		$result->invalidate($tag, 'Пожалуйста, введите номер телефона полностью.');
+	}
+
+	return $result;
+}
+
 
 /**
  * Implement the Custom Header feature.
