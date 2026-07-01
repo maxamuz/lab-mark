@@ -512,4 +512,42 @@
     // Обновляем состояние кнопок при загрузке
     updateExpandCollapseButtons();
   });
+
+  // Валидция телефона
+  document.addEventListener("DOMContentLoaded", function () {
+    const phoneInput = document.querySelector('input[name="tel-265"]');
+    if (!phoneInput) return;
+
+    function formatPhone(value) {
+      // Оставляем только цифры
+      let digits = value.replace(/\D/g, "");
+
+      // Приводим к формату, начинающемуся с 7
+      if (digits.startsWith("8")) {
+        digits = "7" + digits.slice(1);
+      }
+      if (!digits.startsWith("7")) {
+        digits = "7" + digits;
+      }
+      digits = digits.slice(0, 11); // максимум 11 цифр (7 + 10)
+
+      let result = "+7";
+      if (digits.length > 1) result += " (" + digits.slice(1, 4);
+      if (digits.length >= 4) result += ") " + digits.slice(4, 7);
+      if (digits.length >= 7) result += "-" + digits.slice(7, 9);
+      if (digits.length >= 9) result += "-" + digits.slice(9, 11);
+
+      return result;
+    }
+
+    phoneInput.addEventListener("input", function () {
+      this.value = formatPhone(this.value);
+    });
+
+    phoneInput.addEventListener("focus", function () {
+      if (!this.value) this.value = "+7 (";
+    });
+
+    phoneInput.setAttribute("inputmode", "tel");
+  });
 })();
