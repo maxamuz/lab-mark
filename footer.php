@@ -136,6 +136,35 @@
 	</a>
 </div>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Функция для замены текста в атрибутах data-msg-*
+		function updateMaskMessages() {
+			const phoneInputs = document.querySelectorAll('input[data-mask]'); // Ищем все input с маской
+
+			phoneInputs.forEach(function(input) {
+				// Проверяем наличие атрибута и меняем значение
+				if (input.hasAttribute('data-msg-incomplete')) {
+					input.setAttribute('data-msg-incomplete', 'Пожалуйста, введите полный номер телефона.');
+				}
+				if (input.hasAttribute('data-msg-complete')) {
+					input.setAttribute('data-msg-complete', 'Номер телефона введен! Пожалуйста, проверьте его правильность перед отправкой.');
+				}
+			});
+		}
+
+		// Вызываем функцию при загрузке DOM
+		updateMaskMessages();
+
+		// Также вызываем при отправке формы (если плагин сбрасывает значения обратно)
+		document.addEventListener('wpcf7submit', function(event) {
+			updateMaskMessages(); // Обновляем снова, если нужно
+		});
+
+	});
+</script>
+
+
 </body>
 
 </html>
