@@ -111,7 +111,7 @@
 				);
 				?>
 				<div class="top-contacts">
-					<a href="tel:+79613738945" class="contacts-phone" style="padding: 10px 24px; font-size: 0.9rem">+7 (961) 373-89-45</a>
+					<a href="tel:+79800618943" class="contacts-phone" style="padding: 10px 24px; font-size: 0.9rem">+7 (980) 061-89-43</a>
 					<a href="#cta" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem">Обсудить проект</a>
 				</div>
 
