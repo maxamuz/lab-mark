@@ -562,4 +562,34 @@
       subtree: true,
     });
   });
+
+  // Подставляем значения в поля формы
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Находим все кнопки "Выбрать" внутри блоков с тарифами
+    document.querySelectorAll(".plan .btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        // Ищем родительский блок тарифа и берём его название
+        const plan = btn.closest(".plan");
+        if (!plan) return;
+
+        const planNameEl = plan.querySelector(".plan__name");
+        if (!planNameEl) return;
+
+        const planName = planNameEl.textContent.trim();
+
+        // Находим textarea формы обратной связи по имени поля CF7
+        const messageField = document.querySelector(
+          'textarea[name="your-message"]',
+        );
+        if (messageField) {
+          messageField.value = "Интересует тариф: " + planName;
+
+          // На случай валидации CF7 — генерируем событие изменения
+          messageField.dispatchEvent(new Event("input", { bubbles: true }));
+          messageField.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    });
+  });
 })();
