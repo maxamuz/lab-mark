@@ -163,27 +163,25 @@
 
 	});
 </script>
+
 <script>
-	function my_cf7_translate_script() {
-    ?>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        function translateCf7Errors() {
-            document.querySelectorAll('.wpcf7-not-valid-tip').forEach(function (span) {
-                if (span.textContent.trim() === 'Please complete the phone number.') {
-                    span.textContent = 'Пожалуйста, укажите номер телефона полностью.';
-                }
-            });
-        }
-        translateCf7Errors();
-        const observer = new MutationObserver(translateCf7Errors);
-        observer.observe(document.body, { childList: true, subtree: true });
-    });
-    </script>
-    <?php
-}
-add_action('wp_footer', 'my_cf7_translate_script');
+	document.addEventListener('DOMContentLoaded', function() {
+		function translateCf7Errors() {
+			document.querySelectorAll('.wpcf7-not-valid-tip').forEach(function(span) {
+				if (span.textContent.trim() === 'Please complete the phone number.') {
+					span.textContent = 'Пожалуйста, укажите номер телефона полностью.';
+				}
+			});
+		}
+		translateCf7Errors();
+		const observer = new MutationObserver(translateCf7Errors);
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true
+		});
+	});
 </script>
+
 
 </body>
 
