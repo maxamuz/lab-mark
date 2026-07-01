@@ -592,4 +592,14 @@
       });
     });
   });
+
+  document.querySelectorAll("input[data-mask]").forEach(function (input) {
+    input.addEventListener("input", function (e) {
+      // Удаляем всё, кроме цифр, +, пробелов и скобок (адаптируйте под вашу маску)
+      let cleaned = this.value.replace(/[^\d+\s()-]/g, "");
+      if (this.value !== cleaned) {
+        this.value = cleaned;
+      }
+    });
+  });
 })();
