@@ -138,28 +138,40 @@
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		// Функция для замены текста в атрибутах data-msg-*
 		function updateMaskMessages() {
-			const phoneInputs = document.querySelectorAll('input[data-mask]'); // Ищем все input с маской
+			const phoneInputs = document.querySelectorAll('input[data-mask]');
 
 			phoneInputs.forEach(function(input) {
-				// Проверяем наличие атрибута и меняем значение
 				if (input.hasAttribute('data-msg-incomplete')) {
 					input.setAttribute('data-msg-incomplete', 'Пожалуйста, введите полный номер телефона.');
 				}
 				if (input.hasAttribute('data-msg-complete')) {
 					input.setAttribute('data-msg-complete', 'Номер телефона введен! Пожалуйста, проверьте его правильность перед отправкой.');
 				}
+				// Добавляем перевод для Invalid phone number, если он есть как data атрибут
+				// Обратите внимание: если эта ошибка выводится через JS-библиотеку маски напрямую,
+				// этот способ может не сработать для неё.
+				if (input.hasAttribute('data-msg-invalid')) { // Проверьте, используется ли именно этот атрибут
+					input.setAttribute('data-msg-invalid', 'Неверный номер телефона.');
+				}
 			});
 		}
 
-		// Вызываем функцию при загрузке DOM
 		updateMaskMessages();
 
-		// Также вызываем при отправке формы (если плагин сбрасывает значения обратно)
+		// Опционально: вызвать снова при событиях формы, если нужно
 		document.addEventListener('wpcf7submit', function(event) {
-			updateMaskMessages(); // Обновляем снова, если нужно
+			updateMaskMessages();
 		});
+
+		// Пример: если ошибка валидации появляется позже (например, через mutation observer или другое событие),
+		// понадобится более сложная логика для её поиска и замены.
+		// Ниже простой пример для изменения текста у уже существующего элемента ошибки,
+		// если он появляется с фиксированным текстом (редко).
+		// const validationError = document.querySelector('.wpcf7-not-valid-tip'); // Найдите нужный селектор
+		// if (validationError && validationError.textContent === 'Invalid phone number.') {
+		//     validationError.textContent = 'Неверный номер телефона.';
+		// }
 
 	});
 </script>
