@@ -19,31 +19,31 @@
 					Создаём надёжные веб-решения для бизнеса любого масштаба.
 					Разработка, сопровождение, поддержка.
 				</p>
-				<div class="social-links">
+				<!-- <div class="social-links">
 					<a href="#" class="social-link" aria-label="Telegram">✈</a>
 					<a href="#" class="social-link" aria-label="WhatsApp">💬</a>
 					<a href="#" class="social-link" aria-label="VK">V</a>
 					<a href="#" class="social-link" aria-label="GitHub">⌨</a>
-				</div>
+				</div> -->
 			</div>
 			<div class="footer-col">
 				<h4>Услуги</h4>
 				<ul style="line-height: 2.2">
-					<li><a href="#services">Разработка сайтов</a></li>
-					<li><a href="#services">Техподдержка</a></li>
-					<li><a href="#pricing">Цены</a></li>
-					<li><a href="#">SEO-оптимизация</a></li>
-					<li><a href="#">Хостинг и домены</a></li>
+					<li><a href="/#services">Разработка сайтов</a></li>
+					<li><a href="/#services">Техподдержка</a></li>
+					<li><a href="/#pricing">Цены</a></li>
+					<!-- <li><a href="#">SEO-оптимизация</a></li>
+					<li><a href="#">Хостинг и домены</a></li> -->
 				</ul>
 			</div>
 			<div class="footer-col">
 				<h4>Компания</h4>
 				<ul style="line-height: 2.2">
-					<li><a href="#about">О нас</a></li>
-					<li><a href="#portfolio">Портфолио</a></li>
-					<li><a href="#reviews">Отзывы</a></li>
-					<li><a href="#blog">Блог</a></li>
-					<li><a href="#faq">FAQ</a></li>
+					<li><a href="/#about">О нас</a></li>
+					<li><a href="/#portfolio">Портфолио</a></li>
+					<li><a href="/#reviews">Отзывы</a></li>
+					<li><a href="/#blog">Блог</a></li>
+					<li><a href="/#faq">FAQ</a></li>
 				</ul>
 			</div>
 			<div class="footer-col">
