@@ -411,7 +411,7 @@ get_header();
 				💡 Нужен индивидуальный расчёт?
 				<a href="#cta">Обсудите проект с нами</a>
 			</p>
-			<p style="margin-top: 10px; font-size: 0.85rem">
+			<p style="margin-top: 10px; font-size: 1.15rem">
 				Также предлагаем <strong>ежемесячную техподдержку</strong> от 15 000
 				₽/мес
 			</p>
