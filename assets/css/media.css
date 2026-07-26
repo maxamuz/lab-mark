@@ -220,4 +220,12 @@
   .button-close {
     width: 75%;
   }
+  .ith-landing .btn--large {
+    padding: 16px 30px;
+    width: 100%;
+    text-align: center;
+  }
+  .ith-landing .btn--ghost {
+    width: 100%;
+  }
 }
